@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}{% load bootstrap4 %}
+{% block title %}<title>{{ workshop_detail.0.title }} - {{ workshop_detail.0.start_date }} to {{ workshop_detail.0.end_date }}</title>{% endblock title %}
+{% block keywords %}<meta name="description" content="{{ workshop_detail.0.title }} - {{ workshop_detail.0.start_date }} to {{ workshop_detail.0.end_date }}">{% endblock keywords %}
+{% block description %}<meta name="keywords" content="{{ workshop_detail.0.title }}">{% endblock description %}
+{% block style %}
+<style>
+    .form-group {
+        margin: 0px 0px 8px;
+        color: #3d3a96;
+    }
+    .form-control {
+        border-color: #4ab8cb !important;
+    }
+</style>
+{% endblock style %}
+{% block header %}<a href="{% url 'doula_training:doula' %}" class="header-link">Doula Training Workshop</a> : Booking Form{% endblock header %}
+{% block content %}
+<div class="jumbotron">
+    <div class="row align-items-start">
+        <div class="col-lg-6">
+            <h3>{{ workshop_detail.0.title }}</h3>
+            <h5>Date &amp; Time</h5>
+            <p class="body-p">{{ workshop_detail.0.start_date }} to {{ workshop_detail.0.end_date }}</p>
+            <h5>Location</h5>
+            <p class="body-p">
+                {{ workshop_detail.0.location.location_name }}<br />
+                {{ workshop_detail.0.location.location_address }}<br />
+                {{ workshop_detail.0.location.location_city }}, {{ workshop_detail.0.location.location_state }} {{ workshop_detail.0.location.location_zip }}
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <div id="map"></div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    {% if message %}<div class="alert alert-danger alert-dismissible alert-link" role="alert">
+    <button class="close" type="button" data-dismiss="alert" aria-label="close">&#215;</button>
+        {{ message }}
+    </div>{% endif %}
+{% if not message %}
+<form method="POST" name="doula_form" action="{% url 'doula_training:register' pk=workshop_detail.0.pk location=workshop_detail.0.location_id %}">
+    {% csrf_token %}
+    <div class="form-group">
+        Choose payment option:
+        <div class="form-check">
+            <input id="id_cost1" required onchange="updateCost(this.value)" class="form-check-input" type="radio" name="cost-display" value="{{ workshop_detail.0.discount_price }}">
+            <label for="id_cost1" class="form-check-label">Doula Workshop: ${{ workshop_detail.0.discount_price }} (Save $25 and pay 3 weeks prior to workshop.)</label>
+        </div>
+        <div class="form-check">
+            <input id="id_cost2" required onchange="updateCost(this.value)" class="form-check-input" type="radio" name="cost-display" value="{{ workshop_detail.0.full_price }}">
+            <label for="id_cost2" class="form-check-label">Doula Workshop: ${{ workshop_detail.0.full_price }} ($100 deposit, remainder due the first day of workshop.)</label>
+        </div>
+    </div>
+    {% bootstrap_form form %}
+    {% buttons %}<button type="submit" class="btn btn-success btn-purple">Register</button>{% endbuttons %}
+</form>{% endif %}
+</div>
+<script>
+    function initMap() {
+        var loc = {lat :{{ workshop_detail.0.location.location_lat }}, lng:{{ workshop_detail.0.location.location_lng }}};
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 18, center: loc}
+        );
+        var marker = new google.maps.Marker({position: loc, map: map});
+    }
+
+    function updateCost (val) {
+        document.querySelector('#id_cost').value = val;
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4ETmCJ0FSZMJU-bN1XdgPAzu6zZkZsaQ&callback=initMap"></script>
+{% endblock content %}

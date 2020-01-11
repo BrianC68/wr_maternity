@@ -1,0 +1,165 @@
+h2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: bolder;
+    font-size: 2em;
+    color: #3d3a96;
+}
+
+h3 {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    /* font-size: 28px; */
+    color: #29828b;
+}
+
+h5, h6, h7 {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    color: #29828b;
+}
+
+.jumbotron-p {
+    color: #29828b;
+    font-size: 14px;
+}
+
+.body-p {
+    color: #3d3a96;
+    font-size: 14px;
+}
+
+.btn-purple {
+    background-color: #5d559c !important;
+    border-color: #5d559c !important;
+    color: white !important;
+}
+
+.btn-purple:hover {
+    background-color: #4ab8cb !important;
+    border-color: #4ab8cb !important;
+}
+
+p {
+    color: #29828b;
+    font-size: 14px;
+}
+
+.lato {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+}
+
+.open-sans {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.header {
+    background-color: #5d559c;
+    height: 58px;
+    color: #ffffff;
+    font-weight: 400;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+
+#social-share {
+    max-width: 420px;
+    color: #4ab8cb;
+}
+
+.social-item:hover {
+    color: #5d559c;
+    background-color: #4ab8cb;
+    cursor: pointer;
+}
+
+.footer {
+    background-color: #4ab8cb;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    border-top: 1px solid #3d3a96;
+    border-bottom: 1px solid #3d3a96;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+a.header-link {
+    color: white !important;
+    font-weight: normal !important;
+}
+
+a.header-link:hover {
+    color: #4ab8cb !important;
+}
+
+a.doula-link {
+    font-weight: normal !important;
+}
+
+#map {
+    width: 100%;
+    height: 300px;
+    background-color: gray;
+}
+
+/* change the background color */
+.navbar-custom {
+    background-color: #ffffff;
+}
+/* change the link color and add padding for height */
+.navbar-custom .navbar-nav .nav-link {
+    color: #5d559c;
+    padding: 1rem 1rem;
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+    background-color: #5d559c; /* add background-color to active links */
+}.navbar-custom {
+    background-color: #5d559c;
+}
+
+/* change the brand and text color */
+/* .navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(255,255,255,.8);
+} */
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: #5c5a9c;
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(61, 58, 150, .5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
+  
+  .custom-toggler.navbar-toggler {
+    border-color: rgb(61, 58, 150);
+  } 
+
+/* for dropdown only - change the color of droodown */
+ .navbar-custom .dropdown-menu {
+    background-color: #5d559c;
+}
+.navbar-custom .dropdown-item {
+    color: #ffffff;
+}
+.navbar-custom .dropdown-item:hover,
+.navbar-custom .dropdown-item:focus {
+    color: #3d3a96;
+    background-color: #ffffff;
+}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}{% load bootstrap4 %}
+{% block title %}<title>Contact - Well Rounded Maternity</title>{% endblock title %}
+{% block style %}
+<style>
+    .form-group {
+        margin: 0px 0px 8px;
+        color: #3d3a96;
+    }
+    .form-control {
+        border-color: #4ab8cb !important;
+    }
+    .bdcolor {
+        border-color: #4ab8cb !important;
+    }
+</style>
+{% endblock style %}
+{% block header %}<a href="{% url 'homepage' %}" class="header-link">Well-Rounded Maternity</a> : Contact{% endblock header %}
+{% block content %}
+<div class="jumbotron">
+    <h3>Well-Rounded Maternity Services</h3>
+    <div class="row align-items-start">
+        <div class="col-md">
+            <div class="container mb-4"><h5>Contact Information</h5>
+                <div class="row align-items-start border rounded mb-2 pt-1 bdcolor" style="margin-top: 40px;">
+                    <div class="col-4 col-xs-1" style="font-size: 0.5rem; color: #4ab8cb;">
+                        <i class="fas fa-home fa-7x d-none d-sm-block"></i>
+                        <i class="fas fa-home fa-5x d-block d-sm-none"></i>
+                    </div>
+                    <div class="col">
+                        <p class="body-p" style="word-break: break-all;"><span style="font-size: 12pt; font-weight: bold;">Service Area:</span><br>
+                        Southeastern Wisconsin</p>
+                    </div>
+                </div>
+                <div class="row align-items-start border rounded mb-2 pt-1 bdcolor">
+                    <div class="col-4 col-xs-2" style="font-size: 0.5rem; color: #4ab8cb;">
+                        <i class="fas fa-envelope fa-7x d-none d-sm-block"></i>
+                        <i class="fas fa-envelope fa-5x d-block d-sm-none"></i>
+                    </div>
+                    <div class="col">
+                        <p class="body-p" style="word-break: break-all;"><span style="font-size: 12pt; font-weight: bold;">Email:</span><br>
+                            <a href="mailto:info@well-roundedmaternity.com" class="doula-link">info@well-roundedmaternity.com</a></p>
+                    </div>
+                </div>
+                <div class="row align-items-start border rounded mb-2 pt-1 bdcolor">
+                    <div class="col-4 col-xs-2" style="font-size: 0.5rem; color: #4ab8cb;">
+                        <i class="fas fa-phone fa-7x d-none d-sm-block"></i>
+                        <i class="fas fa-phone fa-5x d-block d-sm-none"></i>
+                    </div>
+                    <div class="col">
+                        <p class="body-p"><span style="font-size: 12pt; font-weight: bold;">Phone:</span><br>
+                        262-893-9945</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h5>Please Fill Out Our Contact Form</h5>
+            {% if messages %}{% for message in messages %}
+            <div class="alert alert-success alert-dismissible alert-link" role="alert">
+            <button class="close" type="button" data-dismiss="alert" aria-label="close">&#215;</button>
+                {{ message }}
+            </div>
+            {% endfor %}{% endif %}
+            <form method="POST" name="contact_form">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons %}<button type="submit" class="btn btn-success btn-purple">Send Message</button>{% endbuttons %}
+            </form>
+        </div>
+    </div>
+</div>
+{% block social %}{% endblock social %}
+{% endblock content %}

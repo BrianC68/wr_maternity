@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}{% load bootstrap4 %}
+{% block title %}<title>Well-Rounded Childbirth Class Booking - Well Rounded Maternity</title>{% endblock title %}
+{% block keywords %}<meta name="keywords" content="{{ class_detail.0.title }}">{% endblock keywords %}
+{% block description %}<meta name="description" content="{{ class_detail.0.title }} - {{ class_detail.0.start_date|date:'l'}}s, {{ class_detail.0.start_date }} to {{ class_detail.0.end_date }}">{% endblock description %}
+{% block style %}
+<style>
+    .form-group {
+        margin: 0px 0px 8px;
+        color: #3d3a96;
+    }
+    .form-control {
+        border-color: #4ab8cb !important;
+    }
+</style>
+{% endblock style %}
+{% block header %}<a href="{% url 'childbirth_classes:classes' %}" class="header-link">Well-Rounded Childbirth Classes</a> : Booking Form{% endblock header %}
+{% block content %}
+<div class="jumbotron">
+    <div class="row align-items-start">
+        <div class="col-lg-6">
+            <h3>{{ class_detail.0.title }}</h3>
+            <h5>Class Type</h5>
+            <p class="body-p">{{ class_detail.0.get_class_type_display }}</p>
+            <h5>Date &amp; Time</h5>
+            <p class="body-p">{{ class_detail.0.start_date|date:"l"}}s, {{ class_detail.0.start_date }} to {{ class_detail.0.end_date }}<br />
+            {{ class_detail.0.start_time }} to {{ class_detail.0.end_time }}</p>
+            <h5>Location</h5>
+            <p class="body-p">
+                {{ class_detail.0.location.location_name }}<br />
+                {{ class_detail.0.location.location_address }}<br />
+                {{ class_detail.0.location.location_city }}, {{ class_detail.0.location.location_state }} {{ class_detail.0.location.location_zip }}
+            </p>
+            <h5>Cost</h5>
+            <p class="body-p">${{ class_detail.0.price }} per couple</p>
+        </div>
+        <div class="col-lg-6">
+            <div id="map"></div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    {% if message %}<div class="alert alert-danger alert-dismissible alert-link" role="alert">
+    <button class="close" type="button" data-dismiss="alert" aria-label="close">&#215;</button>
+        {{ message }}
+    </div>{% endif %}
+{% if not message %}
+<form method="POST" name="doula_form" action="{% url 'childbirth_classes:register' pk=class_detail.0.pk %}">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}<button type="submit" class="btn btn-success btn-purple">Register</button>{% endbuttons %}
+</form>{% endif %}
+</div>
+<script>
+    function initMap() {
+        var loc = {lat :{{ class_detail.0.location.location_lat }}, lng:{{ class_detail.0.location.location_lng }}};
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 18, center: loc}
+        );
+        var marker = new google.maps.Marker({position: loc, map: map});
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4ETmCJ0FSZMJU-bN1XdgPAzu6zZkZsaQ&callback=initMap"></script>
+{% endblock content %}

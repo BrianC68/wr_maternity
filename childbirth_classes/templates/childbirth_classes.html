@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block keywords %}<meta name="keywords" content="Childbirth Classes, childbirth">{% endblock keywords %}
+{% block description %}<meta name="description" content="Well-Rounded Childbirth Classes">{% endblock description %}
+{% block title %}<title>Well-Rounded Childbirth Classes - Well Rounded Maternity</title>{% endblock title %}
+{% block header %}Well-Rounded Childbirth Classes{% endblock header %}
+{% block content %}
+<div class="jumbotron" style="padding-top: 25px; padding-bottom: 15px;">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <img src="{% static 'images/childbirth_class.jpg' %}" alt="Childbirth Class Picture" class="img-thumbnail" />
+        </div>
+        <div class="col-md">
+            <div class="container"><h5>Well-Rounded Childbirth Classes</h5>
+                <p class="jumbotron-p">Whether you are looking for a natural drug-free birth, 
+                    or want to explore your options regarding pain medication during labor, we 
+                    are committed to ensuring that parents are well prepared for labor, delivery, 
+                    and the postpartum period. Instead of teaching a birthing ‘method,’ we give 
+                    you and your partner the information and skills to best accomplish the kind 
+                    of birth experience you desire.</p>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <p class="body-p">The workshop is taught by <a href="{% url 'about' %}">Dr. Coral Slavin</a>: doula, childbirth educator and former owner/director of 
+        Well-Rounded Maternity Center.  Coral has been a doula for 20 years and has attended over 
+        500 births in the Milwaukee area in hospitals, home and birth center. She has been teaching 
+        these classess for a number of years both at Well-Rounded and Southwest Technical College in Fennimore.</p>
+    <h5>The Comprehensive 8-week Class Series covers a variety of topics including:</h5>
+    <div class="container">
+        <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+            <li class="list-group-item" style="padding: 5px 15px;">Sound nutrition and physical exercise to enhance low-risk pregnancies and labors</li>
+            <li class="list-group-item" style="padding: 5px 15px;">Physical and emotional aspects during the various stages of labor</li>
+            <li class="list-group-item" style="padding: 5px 15px;">Pain management without drugs</li>
+            <li class="list-group-item" style="padding: 5px 15px;">Birth interventions, alternatives & plans</li>
+            <li class="list-group-item" style="padding: 5px 15px;">Relaxation, breathing & comfort techniques</li>
+            <li class="list-group-item" style="padding: 5px 15px;">Avoiding or dealing with labor complications</li>
+            <li class="list-group-item" style="padding: 5px 15px;">Postpartum and baby care</li>
+            <li class="list-group-item" style="padding: 5px 15px;">Coping if things don’t go the way you anticipated</li>
+        </ul>
+        <p class="body-p">Following the births of all the babies, each class gets together for a reunion to meet the babies and share birth stories.</p>
+        <p class="body-p">The classes are held 6:30-9:00 p.m., Wednesdays at St. Paul’s Episcopal Church or Thursdays at Mindful Matters Wellness in Milwaukee.</p>
+    </div>
+    <h5>Upcoming 8-week Comprehensive Sessions:</h5>
+    <div class="container">
+        <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+            {% for class in classes.comp_classes %}
+            <li class="list-group-item" style="padding: 5px 15px;">
+                <a href="{% url 'childbirth_classes:register' pk=class.pk slug=class.slug %}">{{ class.start_date|date:"l"}}s, beginning {{ class.start_date }}</a></li>{% endfor %}
+        </ul>
+    </div>
+    <h5>The Condensed 4-week Class Series:</h5>
+    <div class="container">
+        <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+            <li class="list-group-item" style="padding: 5px 15px;">Covers the same topics in an abbreviated fashion</li>
+            <li class="list-group-item" style="padding: 5px 15px;">For couples who are not able to attend the more extensive series</li>
+        </ul>
+        <p class="body-p"><b>Please Note:</b> There is no reunion following this series.</p>
+        <p class="body-p">The classes are held 6:30-9:00 p.m., Tuesdays at Absolute Chiropractic & Wellness in Kenosha.</p>
+    </div>
+    <h5>Upcoming 4-week Condensed Sessions:</h5>
+    <div class="container">
+        <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+            {% for class in classes.cond_classes %}
+            <li class="list-group-item" style="padding: 5px 15px;">
+            <a href="{% url 'childbirth_classes:register' pk=class.pk slug=class.slug %}">{{ class.start_date|date:"l"}}s, beginning {{ class.start_date }}</a></li>{% endfor %}
+        </ul>
+    </div>
+    <h5>Refresher Childbirth Class</h5>
+    <div class="container">
+        <p class="body-p">For couples who had taken Childbirth Classes for their first pregnancy, 
+            this 3-hour class is an ideal way to review the stages of labor, comfort and relaxation 
+            techniques. With a first pregnancy, most couples have the flexibility to spend ample 
+            time in preparing for the birth. Once there is a toddler in the picture, however, 
+            busy couples may find that the refresher class is the first chance that they have 
+            had to focus on this pregnancy and birth!</p>
+        <p class="body-p">Refresher Childbirth Classes are scheduled upon request.</p>
+        <p class="body-p">For information or to register for upcoming classes, contact Coral at 
+            Coral@well-roundedmaternity.com or call 262-262-8945 or signup online, 
+            click the appropriate links above.</p>
+    </div>
+</div>
+{% endblock content %}

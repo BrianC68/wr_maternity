@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}<title>Doula Workshop Success - Well Rounded Maternity</title>{% endblock title %}
+{% block header %}Doula Workshop Booking Success{% endblock header %}
+{% block content %}
+<div class="container">
+    <h5>Thank you for signing up for the {{ booking_detail.workshop.title }}!</h5>
+    <p class="body-p">Check your inbox for a confirmation email with details. <b>You may print this page 
+        as a record of your booking.</b></p>
+    <p class="body-p">The cost of the {{ booking_detail.workshop.title }} is ${{ booking_detail.cost }}.
+        {% if booking_detail.cost == 275 %}
+        You may pay now by selecting a payment method below, or send a check 3 weeks prior to the workshop.
+            {% else %}
+            You must pay a ${{ booking_detail.workshop.deposit }} deposit to reserve your spot. You may pay now by clicking the Buy Now below or 
+            mailing a check to the address below. The remainder will be due at the first class.
+        {% endif %}</p>
+    <div class="container body-p">
+        <div class="row">
+            <div class="col-2">
+                Name:
+            </div>
+            <div class="col">
+                {{ booking_detail.first_name }} {{ booking_detail.last_name }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                Email:
+            </div>
+            <div class="col">
+                {{ booking_detail.email }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                Address: 
+            </div>
+            <div class="col">
+                {{ booking_detail.address }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                
+            </div>
+            <div class="col">
+                {{ booking_detail.city }}, {{ booking_detail.state }} {{ booking_detail.postal_code }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                Phone: 
+            </div>
+            <div class="col">
+                {{ booking_detail.phone }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                Class: 
+            </div>
+            <div class="col">
+                {{ booking_detail.workshop.title }} ({{ booking_detail.workshop.get_class_type_display }})
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                Start Date: 
+            </div>
+            <div class="col">
+                {{ booking_detail.workshop.start_date }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                Location: 
+            </div>
+            <div class="col">
+                {{ booking_detail.workshop.location.location_name }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <!-- Blank for spacing -->
+            </div>
+            <div class="col">
+                {{ booking_detail.workshop.location.location_address }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <!-- Blank for spacing -->
+            </div>
+            <div class="col">
+                {{ booking_detail.workshop.location.location_city }}, {{ booking_detail.workshop.location.location_state }}  {{ booking_detail.workshop.location.location_zip }}
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-2">
+                Mail Check To:
+            </div>
+            <div class="col">
+                Well-Rounded Maternity
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <!-- Blank for spacing -->
+            </div>
+            <div class="col">
+                123 Any Street
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <!-- Blank for spacing -->
+            </div>
+            <div class="col">
+                Mequon, WI 53013
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col text-center">
+            {{ form.render }}
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col text-center">
+            <span style="color: #4ab8cb;"><i class="fab fa-cc-paypal fa-3x"></i></span>
+            <h3>Please Click the &quot;Return to Merchant&quot; Button After You Have Paid to Complete the Transaction</h3>
+        </div>
+    </div>
+</div>
+{% block social %}{% endblock social %}
+{% endblock content %}

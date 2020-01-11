@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans:400,600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="{%static 'images/icons/favicon-32x32.png'%}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{%static 'images/icons/favicon-16x16.png'%}">
+    {% block keywords %}{% endblock keywords %}
+    {% block description %}{% endblock description %}
+    {% block title %}{% endblock title %}
+    {% block style %}{% endblock style %}
+    <style>
+        a:link {
+        color: #3d3a96;
+        font-weight: bold;
+        }
+        a:visited {
+            color: #3d3a96;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #4ab8cb;
+            text-decoration: none;
+            /* background-color: #3d3a96; */
+        }
+        a:active {
+            color: #4ab8cb;
+        }
+    </style>
+</head>
+<body class="open-sans">
+    <!-- Navbar-->
+    <nav class="navbar navbar-expand-md navbar-custom" style="background-color: white;">
+        <div class="container">
+            <div class="container">
+            <a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static 'images/wr-logo-250x63.jpg' %}" alt="Home" class="nav-logo" /></a>
+            <button class="custom-toggler navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="custom-toggler navbar-toggler-icon"></span>
+            </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="https://www.facebook.com/wellroundedmaternity" class="nav-link rounded" style="padding: 8px 0px;">
+                            <div class="col-4 col-xs-2" style="font-size: 0.5rem; color: #4ab8cb;">
+                                <i class="fab fa-facebook-square fa-5x d-none d-sm-block"></i><i class="fab fa-facebook-square fa-3x d-block d-sm-none"></i>
+                            </div>
+                        </a></li>
+                </ul>
+                <ul class="navbar-nav justify-content-end" style="width: 100%;">
+                    {% if user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link rounded" href="/admin" target="_blank">Admin</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link rounded" href="{% url 'homepage' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link rounded" href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle rounded" href="#" id="classesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Classes</a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="classesDropdown">
+                            <a href="{% url 'doula_training:doula' %}" class="dropdown-item">Doula Training Workshop</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{% url 'childbirth_classes:classes' %}" class="dropdown-item">Well-Rounded Childbirth</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle rounded" href="#" id="resourcesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources</a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="resourcesDropdown">
+                                <a href="{% url 'find_a_doula:doula-list' %}" class="dropdown-item">Find a Doula</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="{% url 'find_a_midwife:midwife-list' %}" class="dropdown-item">Find a Midwife</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="https://carenetworkwisconsin.org/" target="_blank" rel="noopener" class="dropdown-item">CARE Network</a>
+                            </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link rounded" href="{% url 'contact:contact' %}">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+    <!-- Header -->
+    <div class="container-fluid header lato">
+        <div id="header-text" class="container" style="margin-left: 20px;">
+            {% block header %}Welcome to Well-Rounded Maternity{% endblock header %}
+        </div>
+    </div>
+    <!-- End Header -->
+    <!-- Content -->
+    <div class="container" style="width: 90%;">
+    {% block content %}
+    {% endblock content %}
+    </div>
+    {% block social %}
+    <div id="social-share" class="container lato text-center">
+        <div class="row d-flex justify-content-center border border-bottom-0 rounded-top" style="border-color: #4ab8cb !important;">
+            <span>Share</span>
+        </div>
+        <div class="row d-flex justify-content-center" style=" height: 60px;">
+            <div id="facebook-share" class="border border-right-0 rounded-left mx-0 my-4 d-flex justify-content-center align-items-center flex-grow-1 social-item" style="height: 60px; border-color: #4ab8cb !important;">
+                <i class="fab fa-facebook-square fa-2x"></i>
+            </div>
+            <div id="twitter-share" class="border-left border-top border-bottom border-info mx-0 my-4 d-flex justify-content-center align-items-center flex-grow-1 social-item" style="height: 60px; border-color: #4ab8cb !important;">
+                <i class="fab fa-twitter-square fa-2x"></i>
+            </div>
+            <div id="pinterest-share" class="border-left border-top border-bottom border-info mx-0 my-4 d-flex justify-content-center align-items-center flex-grow-1 social-item" style="height: 60px; border-color: #4ab8cb !important;">
+                <i class="fab fa-pinterest-square fa-2x"></i>
+            </div >
+            <div id="linkedin-share" class="border-left border-top border-bottom border-info mx-0 my-4 d-flex justify-content-center align-items-center flex-grow-1 social-item" style="height: 60px; border-color: #4ab8cb !important;">
+                <i class="fab fa-linkedin fa-2x"></i>
+            </div>
+            <div id="tumblr-share" class="border-left border-top border-bottom border-info mx-0 my-4 d-flex justify-content-center align-items-center flex-grow-1 social-item" style="height: 60px; border-color: #4ab8cb !important;">
+                <i class="fab fa-tumblr-square fa-2x"></i>
+            </div>
+            <div id="reddit-share" class="border-left border-top border-bottom border-info mx-0 my-4 d-flex justify-content-center align-items-center flex-grow-1 social-item" style="height: 60px; border-color: #4ab8cb !important;">
+                <i class="fab fa-reddit-square fa-2x"></i>
+            </div>
+            <div id="mail-share" class="border rounded-right border-info mx-0 my-4 d-flex justify-content-center align-items-center flex-grow-1 social-item" style="height: 60px; border-color: #4ab8cb !important;">
+                <i class="fas fa-envelope-square fa-2x"></i>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/social_share.js' %}"></script>
+    {% endblock social %}
+    <!-- End Content -->
+    <!-- Footer -->
+    <div class="container-fluid footer open-sans" style="margin-top: 50px;">
+        &copy; Copyright 2018 - Well-Rounded Maternity Services | 262.893.9945 | Serving the Greater Milwaukee & Southeastern Wisconsin Area
+    </div>
+    <!-- End Footer -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2cb1c0d76b.js" crossorigin="anonymous"></script>
+</body>
+</html>

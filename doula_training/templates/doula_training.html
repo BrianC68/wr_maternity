@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block keywords %}<meta name="keywords" content="Doula">{% endblock keywords %}
+{% block description %}<meta name="description" content="Doula Training Workshop">{% endblock description %}
+{% block title %}<title>Doula Training Workshop - Well Rounded Maternity</title>{% endblock title %}
+{% block header %}Doula Training Workshop{% endblock header %}
+{% block content %}
+<div class="jumbotron" style="padding-top: 25px; padding-bottom: 15px;">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <img src="{% static 'images/doula_training.jpg' %}" alt="Doula Training" class="img-thumbnail" />
+        </div>
+        <div class="col-md">
+            <div class="container"><h5>Doula Training Workshop</h5>
+                <p class="jumbotron-p">Have you ever thought of becoming a birth doula? 
+                    This 2 1/2 day workshop gives you the basics on how to support a family in labor.</p>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <p class="body-p">The workshop is taught by <a href="{% url 'about' %}">Dr. Coral Slavin</a>: doula, childbirth educator and former owner/director of 
+        Well-Rounded Maternity Center.  Coral has been a doula for 20 years and has attended over 
+        500 births in the Milwaukee area in hospitals, home and birth center. She has been teaching 
+        these trainings for a number of years both at Well-Rounded as well as Southwest Technical College in Fennimore.</p>
+    <h5>Doula Training covers:</h5>
+    <div class="container">
+        <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+            <li class="list-group-item" style="padding: 5px 15px;">Review of labor stages</li>
+            <li class="list-group-item" style="padding: 5px 15px;">Positioning</li>
+            <li class="list-group-item" style="padding: 5px 15px;">Relaxation and comfort techniques</li>
+            <li class="list-group-item" style="padding: 5px 15px;">Coping with complications</li>
+            <li class="list-group-item" style="padding: 5px 15px;">Pros and cons of interventions</li>
+            <li class="list-group-item" style="padding: 5px 15px;">The business of being a doula</li>
+        </ul>
+    </div>
+    <h5>Doula certification through Well-Rounded Maternity requires:</h5>
+    <div class="container">
+        <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+            <li class="list-group-item" style="padding: 5px 15px;">Attendance/evaluation of three labors</li>
+            <li class="list-group-item" style="padding: 5px 15px;">Additional readings</li>
+        </ul>
+    </div>
+    <h5>Cost(includes written materials):</h5>
+    <div class="container">
+        <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+            <li class="list-group-item body-p" style="padding: 5px 15px;">${{ object_list.0.discount_price }} per person
+                <ul class="body-p">
+                    <li>Early bird registration and payment in full 3 weeks before training</li>
+                </ul>
+            </li>
+            <li class="list-group-item body-p" style="padding: 5px 15px;">${{ object_list.0.full_price }} per person
+                <ul class="body-p">
+                    <li>Payment in full at Workshop</li>
+                    <li>Must pay ${{ object_list.0.deposit }} deposit to secure your spot</li>
+                    <li>Remaining balance due the first day of workshop</li>
+                    <li>Pros and cons of interventions</li>
+                    <li>Deposit is non-refundable but can be applied to an upcoming training workshop</li>
+                </ul>
+            </li>
+            
+        </ul>
+    </div>
+    <h5>Workshop Details:</h5>
+    <div class="container mb-5">
+        <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+            <li class="list-group-item body-p" style="padding: 5px 15px;">Where:
+                <ul class="body-p">
+                    <li>Mindful Matters Wellness, 1845 N. Farwell Ave., Milwaukee, WI 53202</li>
+                </ul>
+            </li>
+            <li class="list-group-item body-p" style="padding: 5px 15px;">When:
+                <ul class="body-p">
+                    {% for object in object_list %}
+                    <li>{{ object.start_date }} to {{ object.end_date }}, <a href="{% url 'doula_training:register' pk=object.pk location=object.location_id slug=object.slug %}">Register for this workshop.</a></li>
+                    {% empty %}
+                    <li>Sorry, no upcoming Doula Workshops!</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock content %}

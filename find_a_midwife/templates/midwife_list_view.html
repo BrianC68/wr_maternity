@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block keywords %}<meta name="keywords" content="Midwives, Midwife, Southeastern Wisconsin, Southcentral Wisconsin, Western Wisconsin, Northern Illinois">{% endblock keywords %}
+{% block description %}<meta name="description" content="Find a midwife">{% endblock description %}
+{% block title %}<title>Find a Midwife - Well Rounded Maternity</title>{% endblock title %}
+{% block header %}Find a Midwife{% endblock header %}
+{% block content %}
+<div class="jumbotron" style="padding-top: 25px; padding-bottom: 15px;">
+    <div class="container">
+    <div class="row" style="padding-bottom: 15px;">
+        <div class="col-md-3 text-center">
+            <img src="{% static 'images/midwife.jpg' %}" alt="Find a Midwife" class="img-thumbnail" style="margin-bottom: 15px;" />
+        </div>
+        <div class="col-md">
+            <div class="container"><h5>A Birth Center Is The Practice Of Midwifery Care</h5>
+                <p class="jumbotron-p">The practice of midwifery is different from the practice of obstetrics. 
+                    Midwifery care may be provided by any qualified provider who practices a wellness and holistic 
+                    approach to pregnancy, birth, and women’s health care. Midwifery care focuses on the promotion 
+                    of health and the development of individual responsibility. Midwives take time to listen to 
+                    women…midwives believe that childbearing is normal and that a woman and her family should 
+                    create the birth experience that will be meaningful to them. Midwifery is a collaborative 
+                    practice that involves midwives, nurses, obstetricians, pediatricians and other specialists 
+                    as needed. Midwifery honors and respects the wisdom and dignity of all women.</p>
+                <p><em>~ American Association of Birth Centers</em></p>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="container-fluid mb-5">
+    <div class="row justify-content-center text-center">
+        {% for midwife in midwives %}
+        {% if forloop.counter0|divisibleby:4 and not forloop.first  %}<div class="w-100"><p></p></div>{% endif %}
+        <div class="col-lg-3 col-md-6 col-12">
+            <div class="card w-80 h-100" style="margin: 10px 0px; font-size: 14px;">
+                <img src="{{ midwife.photo_url }}" class="card-img-top" alt="Midwife Name">
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">{{ midwife.name }}</h5>
+                  <p class="body-p">Service Area: {{ midwife.service_area }}</p>
+                  <a href="{% url 'find_a_midwife:midwife-detail' slug=midwife.slug %}" class="btn btn-success btn-purple mt-auto" role="button">Midwife Details</a>
+                </div>
+              </div>
+        </div>{% endfor %}
+    </div>
+</div>
+{% endblock content %}

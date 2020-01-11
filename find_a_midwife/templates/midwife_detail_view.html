@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block keywords %}<meta name="keywords" content="Midwife {{ midwife.name }}">{% endblock keywords %}
+{% block description %}<meta name="description" content="Midwife {{ midwife.name }} Details">{% endblock description %}
+{% block title %}<title>{{ midwife.name }} - Well Rounded Maternity</title>{% endblock title %}
+{% block header %}<a href="{% url 'find_a_midwife:midwife-list' %}" class="header-link">Find a Midwife</a> : {{ midwife.name }}{% endblock header %}
+{% block content %}
+<div class="jumbotron" style="padding-top: 25px; padding-bottom: 15px;">
+    <div class="container">
+    <div class="row align-items-center" style="padding-bottom: 15px;">
+        <div class="col-md-4 text-center">
+            <img src="{{ midwife.photo_url }}" alt="{{ midwife.name }}" class="img-thumbnail" style="margin-bottom: 15px;" />
+        </div>
+        <div class="col-md">
+            <div class="container"><h3>{{ midwife.name }}</h3>
+                <div class="row align-items-start border rounded mb-2 pt-1" style="border-color: #4ab8cb !important;">
+                    <div class="col-4 col-xs-1" style="font-size: 0.5rem; color: #4ab8cb;">
+                        <i class="fas fa-home fa-7x d-none d-sm-block"></i>
+                        <i class="fas fa-home fa-5x d-block d-sm-none"></i>
+                    </div>
+                    <div class="col">
+                        <p class="body-p" style="word-break: break-all;"><span style="font-size: 12pt; font-weight: bold;">Service Area:</span><br>
+                        {{ midwife.service_area }}</p>
+                    </div>
+                </div>
+                <div class="row align-items-start border rounded mb-2 pt-1" style="border-color: #4ab8cb !important;">
+                    <div class="col-4 col-xs-2" style="font-size: 0.5rem; color: #4ab8cb;">
+                        <i class="fas fa-envelope fa-7x d-none d-sm-block"></i>
+                        <i class="fas fa-envelope fa-5x d-block d-sm-none"></i>
+                        <!-- <i class="fas fa-envelope fa-7x"></i> -->
+                    </div>
+                    <div class="col">
+                        <p class="body-p" style="word-break: break-all;"><span style="font-size: 12pt; font-weight: bold;">Email:</span><br>
+                            <a href="mailto:{{ midwife.email }}" class="doula-link">{{ midwife.email }}</a></p>
+                    </div>
+                </div>
+                <div class="row align-items-start border rounded mb-2 pt-1" style="border-color: #4ab8cb !important;">
+                    <div class="col-4 col-xs-2" style="font-size: 0.5rem; color: #4ab8cb;">
+                        <i class="fas fa-phone fa-7x d-none d-sm-block"></i>
+                        <i class="fas fa-phone fa-5x d-block d-sm-none"></i>
+                        <!-- <i class="fas fa-phone fa-7x"></i> -->
+                    </div>
+                    <div class="col">
+                        <p class="body-p" style="word-break: break-all;"><span style="font-size: 12pt; font-weight: bold;">Phone:</span><br>
+                        {{ midwife.phone }}</p>
+                    </div>
+                </div>
+                {% if midwife.website_type %}
+                {% if midwife.website_type == 'WEB' or midwife.website_type == 'FB' %}
+                <div class="row align-items-start border rounded mb-2 pt-1" style="border-color: #4ab8cb !important;">
+                    <div class="col-4 col-xs-2" style="font-size: 0.5rem; color: #4ab8cb;">
+                        {% if midwife.website_type == 'WEB' %}<i class="fas fa-globe fa-7x d-none d-sm-block"></i><i class="fas fa-globe fa-5x d-block d-sm-none"></i>
+                        {% elif midwife.website_type == 'FB' %}<i class="fab fa-facebook-f fa-7x d-none d-sm-block ml-2"></i><i class="fab fa-facebook-f fa-5x d-block d-sm-none ml-2"></i>{% endif %}
+                    </div>
+                    <div class="col">
+                        <p class="body-p" style="word-break: break-all;"><span style="font-size: 12pt; font-weight: bold;">{{ midwife.get_website_type_display }}:</span><br>
+                        <a href="{{ midwife.website_url }}" target="_blank" rel="noopener" class="doula-link">{{ midwife.website_text }}</a></p>
+                    </div>
+                </div>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% if midwife.description != null %}
+    <div class="row">
+        <p class="body-p">{% autoescape off %}{{ midwife.description }}{% endautoescape %}</p>
+    </div>
+    {% endif %}
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block keywords %}<meta name="keywords" content="{{keywords}}">{% endblock keywords %}
+{% block description %}<meta name="description" content="{{description}}">{% endblock description %}
+{% block title %}<title>{{title}} - Well Rounded Maternity</title>{% endblock title %}
+{% block content %}
+<div class="container" style="width:90%">
+    <p style="text-align:center">Founded in 1996 by Dr. Coral Slavin, offering childbirth preparation classes and Doula training in southeast Wisconsin.</p>
+    
+    <div class="row text-center">
+        <div class="col-md-4 mb-3"><img alt="Well Rounded Baby" class="img-thumbnail" src="{% static 'images/wr-baby-e1559771506505_ItXdNem.jpg' %}" /></div>
+        <div class="col-md-4 mb-3"><img alt="Group Photo" class="img-thumbnail" src="{% static 'images/img_20180203_191518_789-1-1-300x200_YxF9MOH.jpg'%}" /></div>
+        <div class="col-md-4 mb-3"><img alt="Brady Doula" class="img-thumbnail" src="{% static 'images/brandy-300x187_F02QX2S.jpg' %}" /></div>
+    </div>
+    
+    <div class="row text-center">
+        <div class="col-md-4 mb-3">
+            <div class="border-0 card mx-auto">
+                <div><img alt="Doula Training" class="img-thumbnail" src="{% static 'images/doula-care-1_0vfkqe7.png' %}" /></div>
+                <div class="card-body">
+                    <p>This 2 1/2 day workshop gives you the basics on how to support a family in labor.</p>
+                    <a class="stretched-link" href="{% url 'doula_training:doula' %}">Doula Training</a></div>
+            </div>
+        </div>
+    
+        <div class="col-md-4 mb-3">
+            <div class="border-0 card mx-auto">
+                <div><img alt="Dr. Coral Slavin" class="img-thumbnail" src="{% static 'images/coral_401-e1559778711748_yi7b9NB.jpg' %}" /></div>
+                <div class="card-body">
+                    <p>In November of 1933, as was customary for women of her social stature, my grandmother.....</p>
+                    <a class="stretched-link" href="{% url 'about' %}">About Dr. Coral Slavin</a></div>
+            </div>
+        </div>
+    
+        <div class="col-md-4 mb-3">
+            <div class="border-0 card mx-auto">
+                <div><img alt="Doula Training" class="img-thumbnail" src="{% static 'images/classes-1-e1559778769938_eE1Z9M7.jpg' %}" /></div>
+                <div class="card-body">
+                    <p>Whether you are looking for a natural drug-free birth, or want to explore your options.....</p>
+                    <a class="stretched-link" href="{% url 'childbirth_classes:classes' %}">Childbirth Classes</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    
