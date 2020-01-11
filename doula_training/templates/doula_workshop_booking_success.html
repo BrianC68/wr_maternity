@@ -15,112 +15,75 @@
             mailing a check to the address below. The remainder will be due at the first class.
         {% endif %}</p>
     <div class="container body-p">
-        <div class="row">
-            <div class="col-2">
+        <div class="row mb-2">
+            <div class="col-sm-2">
                 Name:
             </div>
-            <div class="col">
+            <div class="col-sm-10">
                 {{ booking_detail.first_name }} {{ booking_detail.last_name }}
             </div>
         </div>
-        <div class="row">
-            <div class="col-2">
+        <div class="row mb-2">
+            <div class="col-sm-2">
                 Email:
             </div>
-            <div class="col">
+            <div class="col-sm-10">
                 {{ booking_detail.email }}
             </div>
         </div>
-        <div class="row">
-            <div class="col-2">
+        <div class="row mb-2">
+            <div class="col-sm-2">
                 Address: 
             </div>
-            <div class="col">
-                {{ booking_detail.address }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-2">
-                
-            </div>
-            <div class="col">
+            <div class="col-sm-10">
+                {{ booking_detail.address }}<br />
                 {{ booking_detail.city }}, {{ booking_detail.state }} {{ booking_detail.postal_code }}
             </div>
         </div>
-        <div class="row">
-            <div class="col-2">
+        <div class="row mb-2">
+            <div class="col-sm-2">
                 Phone: 
             </div>
-            <div class="col">
+            <div class="col-sm-10">
                 {{ booking_detail.phone }}
             </div>
         </div>
-        <div class="row">
-            <div class="col-2">
+        <div class="row mb-2">
+            <div class="col-sm-2">
                 Class: 
             </div>
-            <div class="col">
-                {{ booking_detail.workshop.title }} ({{ booking_detail.workshop.get_class_type_display }})
+            <div class="col-sm-10">
+                {{ booking_detail.workshop.title }}
             </div>
         </div>
-        <div class="row">
-            <div class="col-2">
+        <div class="row mb-2">
+            <div class="col-sm-2">
                 Start Date: 
             </div>
-            <div class="col">
+            <div class="col-sm-10">
                 {{ booking_detail.workshop.start_date }}
             </div>
         </div>
-        <div class="row">
-            <div class="col-2">
+        <div class="row mb-2">
+            <div class="col-sm-2">
                 Location: 
             </div>
-            <div class="col">
-                {{ booking_detail.workshop.location.location_name }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-2">
-                <!-- Blank for spacing -->
-            </div>
-            <div class="col">
-                {{ booking_detail.workshop.location.location_address }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-2">
-                <!-- Blank for spacing -->
-            </div>
-            <div class="col">
+            <div class="col-sm-10">
+                {{ booking_detail.workshop.location.location_name }}<br />
+                {{ booking_detail.workshop.location.location_address }}<br />
                 {{ booking_detail.workshop.location.location_city }}, {{ booking_detail.workshop.location.location_state }}  {{ booking_detail.workshop.location.location_zip }}
             </div>
         </div>
         <div class="row mt-3">
-            <div class="col-2">
+            <div class="col-sm-2">
                 Mail Check To:
             </div>
-            <div class="col">
-                Well-Rounded Maternity
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-2">
-                <!-- Blank for spacing -->
-            </div>
-            <div class="col">
-                123 Any Street
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-2">
-                <!-- Blank for spacing -->
-            </div>
-            <div class="col">
-                Mequon, WI 53013
+            <div class="col-sm-10">
+                Well-Rounded Maternity<br />123 Any Street<br />Mequon, WI 53013
             </div>
         </div>
     </div>
-    <div class="row mt-3">
+    <div class="row mt-3 mb-2">
         <div class="col text-center">
             {{ form.render }}
         </div>
