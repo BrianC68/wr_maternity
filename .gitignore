@@ -6,6 +6,7 @@ settings.py
 sent_emails/
 templates/test.html
 wr_maternity_db
+media/
 
 ##############################
 
