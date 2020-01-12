@@ -36,8 +36,8 @@
 </head>
 <body class="open-sans">
     <!-- Navbar-->
-    <nav class="navbar navbar-expand-md navbar-custom" style="background-color: white;">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-custom" style="background-color: white;">
+        <!-- <div class="container"> -->
             <div class="container">
             <a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static 'images/wr-logo-250x63.jpg' %}" alt="Home" class="nav-logo d-none d-sm-block" />
                 <img src="{% static 'images/wr-logo-200x45.jpg' %}" alt="Home" class="nav-logo d-block d-sm-none" /></a>
@@ -46,15 +46,13 @@
             </button>
             </div>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav justify-content-end" style="width: 100%;">
                     <li class="nav-item">
                         <a href="https://www.facebook.com/wellroundedmaternity" class="nav-link rounded" style="padding: 8px 0px;">
                             <div class="col-4 col-xs-2" style="font-size: 0.5rem; color: #4ab8cb;">
                                 <i class="fab fa-facebook-square fa-5x d-none d-sm-block"></i><i class="fab fa-facebook-square fa-3x d-block d-sm-none"></i>
-                            </div>
-                        </a></li>
-                </ul>
-                <ul class="navbar-nav justify-content-end" style="width: 100%;">
+                            </div></a>
+                    </li>
                     {% if user.is_superuser %}
                     <li class="nav-item">
                         <a class="nav-link rounded" href="/admin" target="_blank">Admin</a>
@@ -89,7 +87,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        <!-- </div> -->
     </nav>
     <!-- End Navbar -->
     <!-- Header -->
@@ -100,7 +98,7 @@
     </div>
     <!-- End Header -->
     <!-- Content -->
-    <div class="container" style="width: 90%;">
+    <div class="container">
     {% block content %}
     {% endblock content %}
     </div>
