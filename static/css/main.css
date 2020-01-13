@@ -47,10 +47,12 @@ p {
 .lato {
     font-family: 'Lato', sans-serif;
     font-weight: bold;
+    font-display: swap;
 }
 
 .open-sans {
     font-family: 'Open Sans', sans-serif;
+    font-display: swap;
 }
 
 .header {
