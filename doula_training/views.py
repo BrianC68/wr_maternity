@@ -10,6 +10,7 @@ from .models import DoulaWorkshop, DoulaWorkshopBooking
 from .forms import DoulaWorkshopBookingForm
 from paypal.standard.forms import PayPalPaymentsForm
 from wr_maternity import settings
+from datetime import date
 
 
 class DoulaTrainingIndex(ListView):
@@ -17,24 +18,27 @@ class DoulaTrainingIndex(ListView):
 
     template_name = 'doula_training.html'
     model = DoulaWorkshop
+    todays_date = date.isoformat(date.today())
 
     def get_queryset(self):
-        queryset = super().get_queryset().filter(is_active=True).order_by('start_date')
+        # Get the available Doula Training Workshops
+        queryset = super().get_queryset().filter(is_active=True, start_date__gte=self.todays_date).order_by('start_date')
         return queryset
 
 
 class CreateDoulaWorkshopBooking(CreateView):
-    '''Page where people can sign up for Doula Training Workshops.'''
+    '''Page that displays Doula Training Workshop booking form.'''
 
     model = DoulaWorkshopBooking
     form_class = DoulaWorkshopBookingForm
     template_name = 'doula_workshop_booking_form.html'
-    # success_url = reverse_lazy('doula_training:success')
 
     def get_context_data(self, **kwargs):
+        # Get doula training workshop context for use on the page
         context = super().get_context_data(**kwargs)
         workshop_detail = DoulaWorkshop.objects.filter(pk=self.kwargs['pk'])
         context['workshop_detail'] = workshop_detail
+        # If there are already 10 bookings, return message that the workshop is full
         attendees = DoulaWorkshopBooking.objects.filter(workshop=self.kwargs['pk']).count()
         if attendees >= 10:
             context['message'] = 'Sorry, this workshop is full! Please choose another workshop to attend.'
@@ -42,6 +46,7 @@ class CreateDoulaWorkshopBooking(CreateView):
         
 
     def get_initial(self, **kwargs):
+        # Get doula workshop location and primary key to use as values in the form
         initial = super().get_initial(**kwargs)
         if self.request.method == 'GET':
             initial['location'] = self.kwargs['location']
@@ -54,6 +59,7 @@ class CreateDoulaWorkshopBooking(CreateView):
         return reverse('doula_training:success', kwargs={'pk': self.object.id})
 
     def form_valid(self, form):
+        # If the form is valid, email the workshop attendee and the owner
         name = form.cleaned_data['first_name'] + ' ' + form.cleaned_data['last_name']
         phone = form.cleaned_data['phone']
         email = form.cleaned_data['email']
@@ -98,15 +104,18 @@ class DoulaWorkshopBookingSuccess(TemplateView):
     template_name = 'doula_workshop_booking_success.html'
 
     def get_context_data(self, **kwargs):
+        # Get doula workshop booking details to display on page
         context = super().get_context_data(**kwargs)
         booking = DoulaWorkshopBooking.objects.get(id=kwargs['pk'])
         context['booking_detail'] = booking
 
-        if booking.cost == 300:
+        # Set amount to pay as either deposit
+        if booking.cost == booking.workshop.full_price:
             amount = 100
         else:
             amount = booking.cost
 
+        # Dictionary used to populate the PayPal IPN form.
         paypal_dict = {
             'business': settings.PAYPAL_RECEIVER_EMAIL,
             'amount': amount,

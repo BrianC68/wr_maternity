@@ -8,11 +8,12 @@ from .forms import ContactForm
 
 
 def contact(request):
+    '''Displays contact form if GET and processes form if POST.'''
     if request.method == 'GET':
         form = ContactForm
     else:
         form = ContactForm(request.POST)
-        
+        # If the form is valid, send email to owner.
         if form.is_valid():
             name = form.cleaned_data['name']
             from_email = form.cleaned_data['email']
@@ -28,6 +29,6 @@ def contact(request):
     return render(request, 'contact_form.html', {'form': form})
 
 def success(request):
-    # return HttpResponse('Thank you, your message has been delivered.')
+    '''Returns to contact form and displays message.'''
     messages.add_message(request, messages.SUCCESS, 'Thank you, your message has been delivered.')
     return render(request, 'contact_form.html', {'form': ContactForm})

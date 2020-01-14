@@ -9,10 +9,10 @@
         as a record of your booking.</b></p>
     <p class="body-p">The cost of the {{ booking_detail.workshop.title }} is ${{ booking_detail.cost }}.
         {% if booking_detail.cost == 275 %}
-        You may pay now by selecting a payment method below, or send a check 3 weeks prior to the workshop.
+        You may pay now by clicking the Buy Now button below, or send a check 3 weeks prior to the workshop to the address listed below.
             {% else %}
-            You must pay a ${{ booking_detail.workshop.deposit }} deposit to reserve your spot. You may pay now by clicking the Buy Now below or 
-            mailing a check to the address below. The remainder will be due at the first class.
+            You must pay a ${{ booking_detail.workshop.deposit }} deposit to reserve your spot. You may pay now by clicking the Buy Now button below or 
+            mailing a check to the address listed below. The remainder will be due at the first class.
         {% endif %}</p>
     <div class="container body-p">
         <div class="row mb-2">
@@ -64,7 +64,7 @@
                 {{ booking_detail.workshop.start_date }}
             </div>
         </div>
-        <div class="row mb-2">
+        <div class="row">
             <div class="col-sm-2">
                 Location: 
             </div>
@@ -91,7 +91,7 @@
     <div class="row mt-2">
         <div class="col text-center">
             <span style="color: #4ab8cb;"><i class="fab fa-cc-paypal fa-3x"></i></span>
-            <h3>Please Click the &quot;Return to Merchant&quot; Button After You Have Paid to Complete the Transaction</h3>
+            <h5>Please Click the &quot;Return to Merchant&quot; Button After You Have Paid to Complete the Transaction</h5>
         </div>
     </div>
 </div>

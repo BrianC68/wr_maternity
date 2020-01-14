@@ -10,37 +10,44 @@ from .forms import ChildbirthClassBookingForm
 from locations.models import Location
 from paypal.standard.forms import PayPalPaymentsForm
 from wr_maternity import settings
+from datetime import date
 
 
 class ChildbirthClassIndex(ListView):
+    '''Page that displays childbirth class descriptions and booking dates.'''
 
     template_name = 'childbirth_classes.html'
     model = ChildbirthClass
     context_object_name = 'classes'
+    todays_date = date.today()
 
     def get_queryset(self):
-        queryset = {'comp_classes': super().get_queryset().filter(class_type='COMP', is_active=True).order_by('start_date'),
-                    'cond_classes': super().get_queryset().filter(class_type='COND', is_active=True).order_by('start_date')}
+        # Separate comprehensive and condensed in to different query sets
+        queryset = {'comp_classes': super().get_queryset().filter(class_type='COMP', is_active=True, start_date__gte=self.todays_date).order_by('start_date'),
+                    'cond_classes': super().get_queryset().filter(class_type='COND', is_active=True, start_date__gte=self.todays_date).order_by('start_date')}
         return queryset
 
 
 class CreateChildbirthClassBooking(CreateView):
+    '''Page that displays childbirth class booking form.'''
 
     template_name = 'childbirth_classes_booking_form.html'
     model = ChildbirthClassBooking
     form_class = ChildbirthClassBookingForm
-    # success_url = reverse_lazy('childbirth_classes:success', kwargs={'pk': self.model.id})
 
     def get_context_data(self, **kwargs):
+        # Get childbirth class context for use on the page.
         context = super().get_context_data(**kwargs)
         class_detail = ChildbirthClass.objects.filter(pk=self.kwargs['pk'])
         context['class_detail'] = class_detail
+        # If there are already 10 bookings, return message that the class is full.
         attendees = ChildbirthClassBooking.objects.filter(cb_class=self.kwargs['pk']).count()
         if attendees >= 10:
             context['message'] = 'Sorry, this class is full! Please choose another class to attend.'
         return context
 
     def get_initial(self, **kwargs):
+        # Get childbirth class details to use as values in the form.
         initial = super().get_initial(**kwargs)
         if self.request.method == 'GET':
             initial['cb_class'] = self.kwargs['pk']
@@ -54,6 +61,7 @@ class CreateChildbirthClassBooking(CreateView):
         return reverse('childbirth_classes:success', kwargs={'pk': self.object.id})
 
     def form_valid(self, form):
+        # If the form is valid, email the class attendee and the owner.
         name = form.cleaned_data['first_name'] + ' ' + form.cleaned_data['last_name']
         phone = form.cleaned_data['phone']
         email = form.cleaned_data['email']
@@ -98,10 +106,12 @@ class ChildbirthClassBookingSuccess(TemplateView):
     template_name = 'childbirth_classes_booking_success.html'
 
     def get_context_data(self, **kwargs):
+        # Get childbirth class booking details to display on page.
         context = super().get_context_data(**kwargs)
         booking = ChildbirthClassBooking.objects.get(id=kwargs['pk'])
         context['booking_detail'] = booking
 
+        # Dictionary used to populate the PayPal IPN form.
         paypal_dict = {
             'business': settings.PAYPAL_RECEIVER_EMAIL,
             'amount': booking.cost,
@@ -117,7 +127,5 @@ class ChildbirthClassBookingSuccess(TemplateView):
         # Paypal payment form instance.
         form = PayPalPaymentsForm(initial=paypal_dict)
         context['form'] = form
-
         context['request'] = self.request
-
         return context

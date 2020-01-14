@@ -42,7 +42,3 @@ class Doula(models.Model):
     def photo_url(self):
         if self.photo and hasattr(self.photo, 'url'):
             return self.photo.url
-
-    # def save(self, *args, **kwargs):
-    #     self.slug = slugify(self.name)
-    #     super().save(*args, **kwargs)

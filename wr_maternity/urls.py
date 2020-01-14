@@ -18,8 +18,8 @@ urlpatterns = [
     path('find_a_midwife/', include('find_a_midwife.urls')),
     path('paypal/', include('paypal.standard.ipn.urls')),
     path('payment/success/', PaymentSuccess.as_view(), name='payment-success'),
-    path('resources/pregnancy-childbirth-services/doulas/', RedirectView.as_view(pattern_name='find_a_doula:doula-list', permanent=False)),
-    path('resources/pregnancy-childbirth-services/childbirth-education/', RedirectView.as_view(pattern_name='childbirth_classes:classes')),
-    path('find-a-midwife/', RedirectView.as_view(pattern_name='find_a_midwife:midwife-list')),
-    path('doula-training-workshop/', RedirectView.as_view(pattern_name='doula_training:doula')),
+    path('resources/pregnancy-childbirth-services/doulas/', RedirectView.as_view(pattern_name='find_a_doula:doula-list', permanent=True)),
+    path('resources/pregnancy-childbirth-services/childbirth-education/', RedirectView.as_view(pattern_name='childbirth_classes:classes', permanent=True)),
+    path('find-a-midwife/', RedirectView.as_view(pattern_name='find_a_midwife:midwife-list', permanent=True)),
+    path('doula-training-workshop/', RedirectView.as_view(pattern_name='doula_training:doula', permanent=True)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

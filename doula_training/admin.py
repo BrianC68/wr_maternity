@@ -4,6 +4,7 @@ from .models import DoulaWorkshop, DoulaWorkshopBooking
 
 
 class DoulaWorkshopAdmin(admin.ModelAdmin):
+    '''Change the display of the model in the admin interface.'''
     # put fields in the order in which you want them ordered in admin
     # fields = ['title', 'start_date', 'end_date', 'is_active']
     # adds search functionality to database table
@@ -18,9 +19,11 @@ class DoulaWorkshopAdmin(admin.ModelAdmin):
 
 
 class DoulaWorkshopBookingAdmin(admin.ModelAdmin):
+    '''Change the display of the model in the admin interface.'''
     # adds more fields to admin view
     list_display = ['last_name', 'first_name', 'workshop', 'cost', 'paid']
 
 
+# Register the models so they show up in admin
 admin.site.register(DoulaWorkshop, DoulaWorkshopAdmin)
 admin.site.register(DoulaWorkshopBooking, DoulaWorkshopBookingAdmin)

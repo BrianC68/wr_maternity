@@ -3,6 +3,7 @@ from .models import Doula
 
 
 class DoulaAdmin(admin.ModelAdmin):
+    '''Change the display of the model in the admin interface.'''
     # put fields in the order in which you want them ordered in admin
     # fields = ['title', 'start_date', 'end_date', 'is_active']
     # adds search functionality to database table
@@ -17,4 +18,5 @@ class DoulaAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
 
+# Register the models so they show up in admin
 admin.site.register(Doula, DoulaAdmin)

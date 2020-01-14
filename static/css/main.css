@@ -1,3 +1,23 @@
+
+.nav-logo {
+    width: 200px;
+    height: auto;
+}
+
+@media screen and (min-width: 600px) {
+    .nav-logo {
+        width: 250px;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .nav-logo {
+        width: 350px;
+        height: auto;
+    }
+}
+
 h2 {
     font-family: 'Lato', sans-serif;
     font-weight: bolder;

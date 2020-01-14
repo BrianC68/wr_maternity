@@ -56,7 +56,6 @@ class ChildbirthClassBooking(models.Model):
     postal_code = models.CharField(max_length=5)
     phone = PhoneField()
     cb_class = models.ForeignKey(ChildbirthClass, on_delete=models.CASCADE, related_name='cb_booking', null=True)
-    # location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='cb_booking_location', default=1)
     cost = models.IntegerField(null=True, blank=True)
     paid = models.IntegerField(null=True, blank=True)
 
