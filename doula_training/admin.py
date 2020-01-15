@@ -12,7 +12,7 @@ class DoulaWorkshopAdmin(admin.ModelAdmin):
     # adds filters to right side of admin dbase pages
     # list_filter = []
     # adds more fields to admin view
-    list_display = ['title',  'start_date', 'end_date', 'is_active']
+    list_display = ['title',  'start_date', 'end_date', 'location', 'is_active']
     # list_display_links = []
     # list_editable = ['is_active']
     prepopulated_fields = {'slug': ('title', 'start_date')}
