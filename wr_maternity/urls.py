@@ -18,6 +18,7 @@ urlpatterns = [
     path('find_a_midwife/', include('find_a_midwife.urls')),
     path('paypal/', include('paypal.standard.ipn.urls')),
     path('payment/success/', PaymentSuccess.as_view(), name='payment-success'),
+    path('report_builder/', include('report_builder.urls')),
     path('resources/pregnancy-childbirth-services/doulas/', RedirectView.as_view(pattern_name='find_a_doula:doula-list', permanent=True)),
     path('resources/pregnancy-childbirth-services/childbirth-education/', RedirectView.as_view(pattern_name='childbirth_classes:classes', permanent=True)),
     path('find-a-midwife/', RedirectView.as_view(pattern_name='find_a_midwife:midwife-list', permanent=True)),
