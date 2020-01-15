@@ -9,10 +9,10 @@
         as a record of your booking.</b></p>
     <p class="body-p">The cost of the {{ booking_detail.workshop.title }} is ${{ booking_detail.cost }}.
         {% if booking_detail.cost == 275 %}
-        You may pay now by clicking the Buy Now button below, or send a check 3 weeks prior to the workshop to the address listed below.
+        <b>You must pay now by clicking the Buy Now button below.</b>
             {% else %}
-            You must pay a ${{ booking_detail.workshop.deposit }} deposit to reserve your spot. You may pay now by clicking the Buy Now button below or 
-            mailing a check to the address listed below. The remainder will be due at the first class.
+            There is a ${{ booking_detail.workshop.deposit }} deposit to reserve your spot. <b>You must pay now by clicking the Buy Now button below.</b> 
+            The remainder will be due at the first class.
         {% endif %}</p>
     <div class="container body-p">
         <div class="row mb-2">
@@ -72,14 +72,6 @@
                 {{ booking_detail.workshop.location.location_name }}<br />
                 {{ booking_detail.workshop.location.location_address }}<br />
                 {{ booking_detail.workshop.location.location_city }}, {{ booking_detail.workshop.location.location_state }}  {{ booking_detail.workshop.location.location_zip }}
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-sm-2">
-                Mail Check To:
-            </div>
-            <div class="col-sm-10">
-                Well-Rounded Maternity<br />123 Any Street<br />Mequon, WI 53013
             </div>
         </div>
     </div>

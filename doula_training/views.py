@@ -38,9 +38,9 @@ class CreateDoulaWorkshopBooking(CreateView):
         context = super().get_context_data(**kwargs)
         workshop_detail = DoulaWorkshop.objects.filter(pk=self.kwargs['pk'])
         context['workshop_detail'] = workshop_detail
-        # If there are already 10 bookings, return message that the workshop is full
+        # If there are already 20 bookings, return message that the workshop is full
         attendees = DoulaWorkshopBooking.objects.filter(workshop=self.kwargs['pk']).count()
-        if attendees >= 10:
+        if attendees >= 20:
             context['message'] = 'Sorry, this workshop is full! Please choose another workshop to attend.'
         return context
         
