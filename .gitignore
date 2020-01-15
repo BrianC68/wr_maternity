@@ -9,6 +9,7 @@ wr_maternity_db
 media/
 static/admin/
 static/ckeditor/
+static/report_builder/
 
 ##############################
 
