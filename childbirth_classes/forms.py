@@ -12,5 +12,6 @@ class ChildbirthClassBookingForm(forms.ModelForm):
         labels = {
             'first_name': 'First Name',
             'last_name': 'Last Name',
+            'partner_name': 'Partner Name',
             'postal_code': 'Postal Code',
         }

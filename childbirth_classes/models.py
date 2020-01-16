@@ -50,6 +50,7 @@ class ChildbirthClassBooking(models.Model):
     # Model fields
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+    partner_name = models.CharField(max_length=100, null=True, blank=True)
     email = models.EmailField()
     address = models.CharField(max_length=150)
     city = models.CharField(max_length=50)
@@ -64,3 +65,4 @@ class ChildbirthClassBooking(models.Model):
         # Default ordering is by last name ascending
         ordering = ['last_name']
         unique_together = ['first_name', 'last_name', 'email', 'cb_class']
+        
