@@ -28,18 +28,17 @@ h2 {
 h3 {
     font-family: 'Lato', sans-serif;
     font-weight: bold;
-    /* font-size: 28px; */
-    color: #29828b;
+    color: #3d3a96;
 }
 
-h5, h6, h7 {
+h5, h6 {
     font-family: 'Lato', sans-serif;
     font-weight: bold;
     color: #29828b;
 }
 
 .jumbotron-p {
-    color: #29828b;
+    color: #3d3a96;
     font-size: 14px;
 }
 

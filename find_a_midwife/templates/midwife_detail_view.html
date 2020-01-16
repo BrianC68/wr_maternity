@@ -3,6 +3,12 @@
 {% block keywords %}<meta name="keywords" content="Midwife {{ midwife.name }}">{% endblock keywords %}
 {% block description %}<meta name="description" content="Midwife {{ midwife.name }} Details">{% endblock description %}
 {% block title %}<title>{{ midwife.name }} - Well Rounded Maternity</title>{% endblock title %}
+{% block style %}
+<style>
+    p {
+        color: #3d3a96;
+    }
+</style>{% endblock style %}
 {% block header %}<a href="{% url 'find_a_midwife:midwife-list' %}" class="header-link">Find a Midwife</a> : {{ midwife.name }}{% endblock header %}
 {% block content %}
 <div class="jumbotron" style="padding-top: 25px; padding-bottom: 15px;">
@@ -64,7 +70,7 @@
     </div>
     {% if midwife.description != null %}
     <div class="row">
-        <p class="body-p">{% autoescape off %}{{ midwife.description }}{% endautoescape %}</p>
+        {% autoescape off %}{{ midwife.description }}{% endautoescape %}
     </div>
     {% endif %}
     </div>
