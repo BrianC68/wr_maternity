@@ -3,6 +3,13 @@
 {% block keywords %}<meta name="keywords" content="Doula {{ doula.name }}">{% endblock keywords %}
 {% block description %}<meta name="description" content="Doula {{ doula.name }} Details">{% endblock description %}
 {% block title %}<title>{{ doula.name }} - Well Rounded Maternity</title>{% endblock title %}
+{% block style %}
+<style>
+p {
+    color:#3d3a96;
+}
+</style>
+{% endblock style %}
 {% block header %}<a href="{% url 'find_a_doula:doula-list' %}" class="header-link">Find a Doula</a> : {{ doula.name }}{% endblock header %}
 {% block content %}
 <div class="jumbotron" style="padding-top: 25px; padding-bottom: 15px;">
@@ -62,7 +69,7 @@
     </div>
     {% if doula.description != null %}
     <div class="row">
-        <p class="body-p">{% autoescape off %}{{ doula.description }}{% endautoescape %}</p>
+        {% autoescape off %}{{ doula.description }}{% endautoescape %}
     </div>
     {% endif %}
     </div>
