@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
-from phone_field import PhoneField
+from phonenumber_field.modelfields import PhoneNumberField
 from ckeditor.fields import RichTextField
 
 
@@ -24,7 +24,7 @@ class Midwife(models.Model):
     photo = models.ImageField(upload_to='midwives')
     service_area = models.CharField(max_length=100)
     email = models.EmailField()
-    phone = PhoneField(null=True)
+    phone = PhoneNumberField(null=True)
     website_type = models.CharField(null=True, blank=True, max_length=25, choices=WEBSITE_TYPE_CHOICES)
     website_text = models.CharField(null=True, blank=True, max_length=100)
     website_url = models.URLField(null=True, blank=True)

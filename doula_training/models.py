@@ -1,6 +1,7 @@
 from django.db import models
 from locations.models import Location
-from phone_field import PhoneField
+# from phone_field import PhoneField
+from phonenumber_field.modelfields import PhoneNumberField
 
 class DoulaWorkshop(models.Model):
     '''Model that holds doula workshop details.'''
@@ -37,7 +38,7 @@ class DoulaWorkshopBooking(models.Model):
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=2)
     postal_code = models.CharField(max_length=5)
-    phone = PhoneField()
+    phone = PhoneNumberField()
     workshop = models.ForeignKey(DoulaWorkshop, on_delete=models.CASCADE, related_name='doula_booking', blank=True, null=True)
     location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='booking_location', default=1)
     cost = models.IntegerField(null=True, blank=True)

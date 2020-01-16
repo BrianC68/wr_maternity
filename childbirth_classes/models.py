@@ -1,7 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
 from locations.models import Location
-from phone_field import PhoneField
+# from phone_field import PhoneField
+from phonenumber_field.modelfields import PhoneNumberField
 
 from datetime import time
 
@@ -54,7 +55,7 @@ class ChildbirthClassBooking(models.Model):
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=2)
     postal_code = models.CharField(max_length=5)
-    phone = PhoneField()
+    phone = PhoneNumberField()
     cb_class = models.ForeignKey(ChildbirthClass, on_delete=models.CASCADE, related_name='cb_booking', null=True)
     cost = models.IntegerField(null=True, blank=True)
     paid = models.IntegerField(null=True, blank=True)
