@@ -61,6 +61,10 @@ class CreateDoulaWorkshopBooking(CreateView):
     def form_valid(self, form):
         # If the form is valid, email the workshop attendee and the owner
         name = form.cleaned_data['first_name'] + ' ' + form.cleaned_data['last_name']
+        address = form.cleaned_data['address']
+        city = form.cleaned_data['city']
+        state = form.cleaned_data['state']
+        postal_code = form.cleaned_data['postal_code']
         phone = form.cleaned_data['phone']
         email = form.cleaned_data['email']
         workshop = form.cleaned_data['workshop']
@@ -74,6 +78,8 @@ class CreateDoulaWorkshopBooking(CreateView):
 
         message2 = f"Thank you for signing up for a class with Well-Rounded Maternity! Details are below.\n\n \
         {name}\n \
+        {address}\n \
+        {city}, {state} {postal_code}\n \
         {email}\n \
         {phone}\n \
         Class: {workshop.title}\n \
@@ -83,6 +89,7 @@ class CreateDoulaWorkshopBooking(CreateView):
         {workshop.location.location_name}\n \
         {workshop.location.location_address}\n \
         {workshop.location.location_city}, {workshop.location.location_state} {workshop.location.location_zip}\n\n"
+        message2 += "You will receive a reminder email two weeks prior to class with any further details and instructions.\n\n"
         message2 += "If you have any questions, please contact Coral Slavin @ 262-893-9945. We look forward to seeing you in class!\n\n\nWell-Rounded Maternity"
 
         to_email = User.objects.get(id=2).email
