@@ -27,7 +27,7 @@ class ChildbirthClass(models.Model):
     )
     start_date = models.DateField()
     end_date = models.DateField()
-    start_time = models.TimeField(default=time(16, 30))
+    start_time = models.TimeField(default=time(18, 30))
     end_time = models.TimeField(default=time(21, 0))
     location = models.ForeignKey(Location, default=3, on_delete=models.CASCADE, related_name='cb_location', null=True)
     price = models.IntegerField(default=275)
