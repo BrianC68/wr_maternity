@@ -22,7 +22,7 @@ def contact(request):
             message = f"Message from {name}:\n\n{message}"
             to_email = [User.objects.get(id=2).email, User.objects.get(id=1).email]
             try:
-                send_mail(subject, message, from_email, [to_email])
+                send_mail(subject, message, from_email, to_email)
             except BadHeaderError:
                 return HttpResponse('Invalid header found!')
             return redirect('contact:success')
