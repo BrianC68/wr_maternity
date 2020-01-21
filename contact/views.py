@@ -20,7 +20,7 @@ def contact(request):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             message = f"Message from {name}:\n\n{message}"
-            to_email = User.objects.get(id=2).email
+            to_email = [User.objects.get(id=2).email, User.objects.get(id=1).email]
             try:
                 send_mail(subject, message, from_email, [to_email])
             except BadHeaderError:
