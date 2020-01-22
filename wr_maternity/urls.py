@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, TemplateView
 from site_pages.views import HomePage, AboutPage, PaymentSuccess
 from find_a_doula.views import DoulaListView
 
@@ -23,4 +23,8 @@ urlpatterns = [
     path('resources/pregnancy-childbirth-services/childbirth-education/', RedirectView.as_view(pattern_name='childbirth_classes:classes', permanent=True)),
     path('find-a-midwife/', RedirectView.as_view(pattern_name='find_a_midwife:midwife-list', permanent=True)),
     path('doula-training-workshop/', RedirectView.as_view(pattern_name='doula_training:doula', permanent=True)),
+    path('google8e677ef3f646420f.html', (TemplateView.as_view(
+        template_name = 'google8e677ef3f646420f.html',
+        content_type = 'text/html')),
+        name='google8e677ef3f646420f.html'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

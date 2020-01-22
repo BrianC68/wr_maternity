@@ -1,0 +1,15 @@
+{
+    "name": "Well-Rounded Maternity Doula Training and Childbirth Classes",
+    "short_name": "Well-Rounded Maternity",
+    "prefer_related_applications": false,
+    "start_url": "/",
+    "scope": "/",
+    "orientation": "any",
+    "theme_color": "#5d559c",
+    "background_color": "#5d559c",
+    "display": "standalone",
+    "description": "Well-Rounded Maternity provides childbirth classes for expecting couples and Doula training for women who would like to become a Birth Doula.",
+    "dir": "ltr",
+    "lang": "en-US"
+}
+
