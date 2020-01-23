@@ -41,7 +41,7 @@ class ChildbirthClass(models.Model):
 
 
     def __str__(self):
-        return f"{self.title}, {self.start_date}"
+        return f"{self.title}, {self.start_date}, {self.get_class_type_display()}"
 
 
 class ChildbirthClassBooking(models.Model):
