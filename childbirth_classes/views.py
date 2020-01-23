@@ -81,6 +81,7 @@ class CreateChildbirthClassBooking(CreateView):
         Class: {cb_class.title}\n \
         Starting: {cb_class.start_date}\n \
         Ending: {cb_class.end_date}\n \
+        Time: {cb_class.start_time.strftime('%I:%M %p')} to {cb_class.end_time.strftime('%I:%M %p')}\n \
         Location:\n \
         {cb_class.location.location_name}\n \
         {cb_class.location.location_address}\n \
