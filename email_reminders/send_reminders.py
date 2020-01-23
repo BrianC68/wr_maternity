@@ -32,6 +32,8 @@ def send_childbirth_class_email_reminder(future_date):
         cb_class_attendees = ChildbirthClassBooking.objects.filter(cb_class=cb_class[0].id).values_list('email', flat=True)
         # Cast recipients object as a list
         recipients = list(cb_class_attendees)
+        # Add Brian to recipients for testing period
+        recipients.append(User.objects.get(id=1).email)
         # print(recipients)
     except:
         return
@@ -86,6 +88,8 @@ def send_doula_workshop_email_reminder(future_date):
         dt_workshop_attendees = DoulaWorkshopBooking.objects.filter(workshop=dt_workshop[0].id).values_list('email', flat=True)
         # Cast recipients object as a list
         recipients = list(dt_workshop_attendees)
+        # Add Brian to recipients for testing period
+        recipients.append(User.objects.get(id=1).email)
         # print(recipients)
     except:
         
