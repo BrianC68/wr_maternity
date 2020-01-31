@@ -89,7 +89,7 @@ class CreateChildbirthClassBooking(CreateView):
         message2 += "You will receive a reminder email two weeks prior to class with further details and instructions.\n\n"
         message2 += "If you have any questions, please contact Coral Slavin @ 262-893-9945. We look forward to seeing you in class!\n\n\nWell-Rounded Maternity"
         
-        to_email = [User.objects.get(id=2).email, User.objects.get(id=1).email]
+        to_email = [User.objects.get(id=2).email]
         subject = 'Childbirth Class Booking'
         from_email = 'info@well-roundedmaternity.com'
         try:
