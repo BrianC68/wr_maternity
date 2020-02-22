@@ -33,7 +33,7 @@ def send_childbirth_class_email_reminder(future_date):
         # Cast recipients object as a list
         recipients = list(cb_class_attendees)
         # Add Brian to recipients for testing period
-        recipients.append(User.objects.get(id=1).email)
+        recipients.append(User.objects.get(id=2).email)
         # print(recipients)
     except:
         return
@@ -89,7 +89,7 @@ def send_doula_workshop_email_reminder(future_date):
         # Cast recipients object as a list
         recipients = list(dt_workshop_attendees)
         # Add Brian to recipients for testing period
-        recipients.append(User.objects.get(id=1).email)
+        recipients.append(User.objects.get(id=2).email)
         # print(recipients)
     except:
         
