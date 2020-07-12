@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}{% load bootstrap4 %}
-{% block title %}<title>Contact - Well Rounded Maternity</title>{% endblock title %}
+{% block title %}<title>Contact - Well Rounded Maternity</title>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>{% endblock title %}
 {% block style %}
 <style>
     .form-group {
@@ -65,7 +66,8 @@
             <form method="POST" name="contact_form">
                 {% csrf_token %}
                 {% bootstrap_form form %}
-                {% buttons %}<button type="submit" class="btn btn-success btn-purple">Send Message</button>{% endbuttons %}
+                <div class="g-recaptcha" data-sitekey="6LdEkbAZAAAAAAP-aVGnwMnoMTBNcVknibnVLfir"></div>
+                {% buttons %}<button type="submit" class="btn btn-success btn-purple mt-2">Send Message</button>{% endbuttons %}
             </form>
         </div>
     </div>
