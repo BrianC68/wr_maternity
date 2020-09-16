@@ -76,6 +76,9 @@ class CreateDoulaWorkshopBooking(CreateView):
         Starting: {workshop.start_date}\n\n \
         Login in for details: https://www.well-roundedmaternity.com/admin/doula_training/doulaworkshopbooking/"
 
+        # {workshop.location.location_name}\n \
+        # {workshop.location.location_address}\n \
+        # {workshop.location.location_city}, {workshop.location.location_state} {workshop.location.location_zip}\n\n
         message2 = f"Thank you for signing up for a class with Well-Rounded Maternity! Details are below.\n\n \
         {name}\n \
         {address}\n \
@@ -85,10 +88,7 @@ class CreateDoulaWorkshopBooking(CreateView):
         Class: {workshop.title}\n \
         Starting: {workshop.start_date}\n \
         Ending: {workshop.end_date}\n \
-        Location:\n \
-        {workshop.location.location_name}\n \
-        {workshop.location.location_address}\n \
-        {workshop.location.location_city}, {workshop.location.location_state} {workshop.location.location_zip}\n\n"
+        Location: Remote via Zoom\n\n"
         message2 += "You will receive a reminder email two weeks prior to class with any further details and instructions.\n\n"
         message2 += "If you have any questions, please contact Coral Slavin @ 262-893-9945. We look forward to seeing you in class!\n\n\nWell-Rounded Maternity"
 

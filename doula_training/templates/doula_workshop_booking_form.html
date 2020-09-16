@@ -24,9 +24,12 @@
             <p class="body-p">{{ workshop_detail.0.start_date }} to {{ workshop_detail.0.end_date }}</p>
             <h5>Location</h5>
             <p class="body-p">
-                {{ workshop_detail.0.location.location_name }}<br />
-                {{ workshop_detail.0.location.location_address }}<br />
-                {{ workshop_detail.0.location.location_city }}, {{ workshop_detail.0.location.location_state }} {{ workshop_detail.0.location.location_zip }}
+            {% comment %}
+            {{ workshop_detail.0.location.location_name }}<br />
+            {{ workshop_detail.0.location.location_address }}<br />
+            {{ workshop_detail.0.location.location_city }}, {{ workshop_detail.0.location.location_state }} {{ workshop_detail.0.location.location_zip }}
+            {% endcomment %}
+                <span style="font-weight: bold;">Remote via Zoom</span>
             </p>
         </div>
         <div class="col-lg-6">
@@ -58,17 +61,17 @@
 </form>{% endif %}
 </div>
 <script>
-    function initMap() {
-        var loc = {lat :{{ workshop_detail.0.location.location_lat }}, lng:{{ workshop_detail.0.location.location_lng }}};
-        var map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 18, center: loc}
-        );
-        var marker = new google.maps.Marker({position: loc, map: map});
-    }
+    // function initMap() {
+    //     var loc = {lat :{{ workshop_detail.0.location.location_lat }}, lng:{{ workshop_detail.0.location.location_lng }}};
+    //     var map = new google.maps.Map(
+    //         document.getElementById('map'), {zoom: 18, center: loc}
+    //     );
+    //     var marker = new google.maps.Marker({position: loc, map: map});
+    // }
 
-    function updateCost (val) {
-        document.querySelector('#id_cost').value = val;
-    }
+    // function updateCost (val) {
+    //     document.querySelector('#id_cost').value = val;
+    // }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4ETmCJ0FSZMJU-bN1XdgPAzu6zZkZsaQ&callback=initMap"></script>
+<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4ETmCJ0FSZMJU-bN1XdgPAzu6zZkZsaQ&callback=initMap"></script> -->
 {% endblock content %}

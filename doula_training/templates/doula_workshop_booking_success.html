@@ -69,9 +69,12 @@
                 Location: 
             </div>
             <div class="col-sm-10">
-                {{ booking_detail.workshop.location.location_name }}<br />
-                {{ booking_detail.workshop.location.location_address }}<br />
-                {{ booking_detail.workshop.location.location_city }}, {{ booking_detail.workshop.location.location_state }}  {{ booking_detail.workshop.location.location_zip }}
+            {% comment %}
+            {{ booking_detail.workshop.location.location_name }}<br />
+            {{ booking_detail.workshop.location.location_address }}<br />
+            {{ booking_detail.workshop.location.location_city }}, {{ booking_detail.workshop.location.location_state }}  {{ booking_detail.workshop.location.location_zip }}
+            {% endcomment %}
+            <span style="font-weight: bold;">Remote via Zoom</span>
             </div>
         </div>
     </div>

@@ -72,7 +72,8 @@
                 Location: 
             </div>
             <div class="col-sm-9">
-                {{ booking_detail.cb_class.location.location_name }}
+                {% comment %}{{ booking_detail.cb_class.location.location_name }}{% endcomment %}
+                <span style="font-weight: bold;">Remote via Zoom</span>
             </div>
         </div>
         <div class="row">
@@ -80,7 +81,8 @@
                 <!-- Blank for spacing -->
             </div>
             <div class="col-sm-9">
-                {{ booking_detail.cb_class.location.location_address }}
+                {% comment %}{{ booking_detail.cb_class.location.location_address }}{% endcomment %}
+
             </div>
         </div>
         <div class="row">
@@ -88,7 +90,7 @@
                 <!-- Blank for spacing -->
             </div>
             <div class="col-sm-9">
-                {{ booking_detail.cb_class.location.location_city }}, {{ booking_detail.cb_class.location.location_state }}  {{ booking_detail.cb_class.location.location_zip }}
+                {% comment %}{{ booking_detail.cb_class.location.location_city }}, {{ booking_detail.cb_class.location.location_state }}  {{ booking_detail.cb_class.location.location_zip }}{% endcomment %}
             </div>
         </div>
         <div class="row mt-3 mb-2">

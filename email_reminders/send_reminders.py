@@ -39,11 +39,13 @@ def send_childbirth_class_email_reminder(future_date):
         return
 
     # Build the plain text email message
+    # {cb_class[0].location.location_name}
+    # {cb_class[0].location.location_address}
+    # {cb_class[0].location.location_city}, {cb_class[0].location.location_state} {cb_class[0].location.location_zip}
+
     message = f'''
     {cb_class[0].title}
-    {cb_class[0].location.location_name}
-    {cb_class[0].location.location_address}
-    {cb_class[0].location.location_city}, {cb_class[0].location.location_state} {cb_class[0].location.location_zip}
+    Remote via Zoom
 
     Class Starts: {cb_class[0].start_date.strftime('%b %d, %Y')} at {cb_class[0].start_time.strftime('%I:%M %p')} till {cb_class[0].end_time.strftime('%I:%M %p')}
     Last day of class: {cb_class[0].end_date.strftime('%b %d, %Y')}
@@ -96,11 +98,13 @@ def send_doula_workshop_email_reminder(future_date):
         return
 
     # Build the plain text email message
+    # {dt_workshop[0].location.location_name}
+    # {dt_workshop[0].location.location_address}
+    # {dt_workshop[0].location.location_city}, {dt_workshop[0].location.location_state} {dt_workshop[0].location.location_zip}
+
     message = f'''
     {dt_workshop[0].title}
-    {dt_workshop[0].location.location_name}
-    {dt_workshop[0].location.location_address}
-    {dt_workshop[0].location.location_city}, {dt_workshop[0].location.location_state} {dt_workshop[0].location.location_zip}
+    Remote via Zoom
 
     Class Starts: {dt_workshop[0].start_date.strftime('%b %d, %Y')}
     Last day of class: {dt_workshop[0].end_date.strftime('%b %d, %Y')}

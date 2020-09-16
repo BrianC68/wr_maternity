@@ -74,6 +74,9 @@ class CreateChildbirthClassBooking(CreateView):
         Starting: {cb_class.start_date}\n\n"
         message += "Login in for details: https://www.well-roundedmaternity.com/admin/childbirth_classes/childbirthclassbooking/"
 
+        # {cb_class.location.location_name}\n \
+        # {cb_class.location.location_address}\n \
+        # {cb_class.location.location_city}, {cb_class.location.location_state} {cb_class.location.location_zip}\n\n"
         message2 = f"Thank you for signing up for a class with Well-Rounded Maternity! Details are below.\n\n \
         {name}\n \
         {email}\n \
@@ -82,10 +85,8 @@ class CreateChildbirthClassBooking(CreateView):
         Starting: {cb_class.start_date}\n \
         Ending: {cb_class.end_date}\n \
         Time: {cb_class.start_time.strftime('%I:%M %p')} to {cb_class.end_time.strftime('%I:%M %p')}\n \
-        Location:\n \
-        {cb_class.location.location_name}\n \
-        {cb_class.location.location_address}\n \
-        {cb_class.location.location_city}, {cb_class.location.location_state} {cb_class.location.location_zip}\n\n"
+        Location: Remote via Zoom\n\n"
+        
         message2 += "You will receive a reminder email two weeks prior to class with further details and instructions.\n\n"
         message2 += "If you have any questions, please contact Coral Slavin @ 262-893-9945. We look forward to seeing you in class!\n\n\nWell-Rounded Maternity"
         
