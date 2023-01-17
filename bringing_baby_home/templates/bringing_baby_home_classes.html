@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block keywords %}<meta name="keywords" content="Brining Baby Home Classes">{% endblock keywords %}
+{% block description %}<meta name="description" content="">{% endblock description %}
+{% block title %}<title>Well-Rounded Family Services - Bringing Baby Home Program</title>{% endblock title %}
+{% block header %}Bringing Baby Home Program{% endblock header %}
+{% block content %}
+<div class="jumbotron" style="padding-top: 25px; padding-bottom: 15px;">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <img src="{% static 'images/bbh_educator_300x291.png' %}" alt="Bringing Baby Home" class="img-thumbnail" />
+        </div>
+        <div class="col-md">
+            <div class="container"><h5>Gottman Bringing Baby Home Program</h5>
+                <p class="jumbotron-p"><a href="https://www.youtube.com/watch?v=e_hNCHEmB-o&t=16s" target="_blank">Bringing Baby Home Video</a></p>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <p class="body-p">Becoming parents is a new beginning. For most couples, it is a time of hope, anticipation, 
+        and excitement. Most parenting classes focus on baby, baby, baby.  But what about the two people who made 
+        the baby?  The secret to successfully managing the transition is to keep your relationship strong.</p>
+    
+    <p class="body-p">The Gottman Institute's research-based Bringing Baby Home program prepares couples for life 
+        with a baby and helps them be the best parenting team possible.  With a convenient online format, parents 
+        learn to strengthen their relationship and foster their baby's development.  They build on what Dr. Gottman 
+        and colleagues found is the best predictor of relationship adjustment after a new baby arrives: the quality 
+        of friendship in the relationship.  When babies grow up in a home with a positive, playful parenting team, 
+        they feel safe, nurtured, and available to learn.  They cry less, they smile more, and their parents' 
+        cooperation helps them to pay better attention during play time so that they get more out of it.</p>
+    
+    <p class="body-p">About the Instructor: <a href="{% url 'about' %}"> Dr. Coral Slavin</a> is a Gottman Bringing Baby Home Program Educator.  
+        She has a M.A. & Ph.D. in Health Education, and a M.S. Ed. degree in Family Life.  She has over 25 years of teaching experience.  </p>
+
+    <h5>Gottman Bringing Baby Home Program</h5>
+    <div class="container">
+        <h5>Venue:</h5>
+        <div class="container">
+            <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+                <li class="list-group-item" style="padding: 5px 15px;">The program is conducted remotely via Zoom.</li>
+            </ul>
+        </div>
+
+        <h5>Schedule:</h5>
+        <div class="container">
+            <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+                <li class="list-group-item" style="padding: 5px 15px;">8-week series, Tuesday evenings 7:30-9:00 p.m.</li>
+            </ul>
+        </div>
+    
+        <h5>Cost:</h5>
+        <div class="container">
+            <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+                <li class="list-group-item" style="padding: 5px 15px;">$250 per couple</li>
+                <li class="list-group-item" style="padding: 5px 15px;">Includes: the Gottman kit comprising of the Bringing Baby Home Parents Workbook and Card Decks.</li>
+            </ul>
+        </div>
+
+        <h5>Upcoming Sessions:</h5>
+        <div class="container mb-4">
+            <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+                {% for class in classes.8_week_classes %}
+                <li class="list-group-item" style="padding: 5px 15px;">
+                    <a href="{% url 'bringing_baby_home:register' pk=class.pk slug=class.slug %}">{{ class.start_date|date:"l" }}s, from {{ class.start_date }} to {{ class.end_date }}</a>
+                </li>
+                {% empty %}
+                <li class="list-group-item" style="padding: 5px 15px;">
+                    No sessions at this time
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <h5>Bringing Baby Home: Surviving to Thriving</h5>
+    <div class="container">
+        <p class="body-p">This 4-week program is based upon the Gottman program outlined above.  It is 
+            an abbreviated 'shot in the arm' for new parents just past the survival mode of parenting a newborn. 
+            Free time may be almost non-existent, but you deserve to spend at least one hour a week focused on each other.</p>
+
+        <h5>Venue:</h5>
+        <div class="container">
+            <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+                <li class="list-group-item" style="padding: 5px 15px;">The program is conducted remotely via Zoom.</li>
+            </ul>
+        </div>
+    
+        <h5>Schedule:</h5>
+        <div class="container">
+            <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+                <li class="list-group-item" style="padding: 5px 15px;">4-week series, Sunday mornings 11:00 a.m.-noon</li>
+            </ul>
+        </div>
+        
+        <h5>Cost:</h5>
+        <div class="container">
+            <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+                <li class="list-group-item" style="padding: 5px 15px;">$100 per couple</li>
+            </ul>
+        </div>
+        <h5>Upcoming Sessions:</h5>
+        <div class="container">
+            <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+                {% for class in classes.4_week_classes %}
+                <li class="list-group-item" style="padding: 5px 15px;">
+                    <a href="{% url 'bringing_baby_home:register' pk=class.pk slug=class.slug %}">{{ class.start_date|date:"l" }}s, from {{ class.start_date }} to {{ class.end_date }}</a>
+                </li>
+                {% empty %}
+                <li class="list-group-item" style="padding: 5px 15px;">
+                    No sessions at this time
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}

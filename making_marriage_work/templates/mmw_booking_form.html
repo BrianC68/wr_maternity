@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}{% load bootstrap4 %}
+{% block title %}<title>{{ class_detail.0.title }} - {{ class_detail.0.class_date }} </title>{% endblock title %}
+{% block keywords %}<meta name="description" content="{{ class_detail.0.title }} - {{ class_detail.0.class_date }}">{% endblock keywords %}
+{% block description %}<meta name="keywords" content="{{ class_detail.0.title }}">{% endblock description %}
+{% block style %}
+<style>
+    .form-group {
+        margin: 0px 0px 8px;
+        color: #3d3a96;
+    }
+    .form-control {
+        border-color: #4ab8cb !important;
+    }
+</style>
+{% endblock style %}
+{% block header %}<a href="{% url 'making_marriage_work:classes' %}" class="header-link">Making Marriage Work</a> : Booking Form{% endblock header %}
+{% block content %}
+<div class="jumbotron">
+    <div class="row align-items-start">
+        <div class="col-lg-6">
+            <h3>{{ class_detail.0.title }}</h3>
+            <h5>Date &amp; Time</h5>
+            <p class="body-p">{{ class_detail.0.class_date }}, {{ class_detail.0.start_time }} to {{ class_detail.0.end_time }}</p>
+            <h5>Location</h5>
+            <p class="body-p">
+                <span style="font-weight: bold;">Remote via Zoom</span>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    {% if message %}<div class="alert alert-danger alert-dismissible alert-link" role="alert">
+    <button class="close" type="button" data-dismiss="alert" aria-label="close">&#215;</button>
+        {{ message }}
+    </div>{% endif %}
+{% if not message %}
+<form method="POST" name="making_marriage_work_form" action="{% url 'making_marriage_work:register' pk=class_detail.0.pk %}">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}<button type="submit" class="btn btn-success btn-purple">Register</button>{% endbuttons %}
+</form>{% endif %}
+</div>
+{% endblock content %}

@@ -6,11 +6,33 @@
 {% block content %}
 <div class="container">
     <p style="text-align:center">Founded in 1996 by Dr. Coral Slavin, offering childbirth preparation classes and Doula training in southeast Wisconsin.</p>
-    
     <div class="row text-center">
-        <div class="col-md-4 mb-3"><img alt="Well Rounded Baby" class="img-thumbnail" src="{% static 'images/wr-baby-e1559771506505_ItXdNem.jpg' %}" /></div>
-        <div class="col-md-4 mb-3"><img alt="Group Photo" class="img-thumbnail" src="{% static 'images/img_20180203_191518_789-1-1-300x200_YxF9MOH.jpg'%}" /></div>
-        <div class="col-md-4 mb-3"><img alt="Brady Doula" class="img-thumbnail" src="{% static 'images/brandy-300x187_F02QX2S.jpg' %}" /></div>
+        <div class="col-md-4 mb-3">
+            <div class="border-0 card mx-auto">
+                <div><img alt="Bringing Baby Home" class="img-thumbnail" src="{% static 'images/bbh_educator3.png' %}" /></div>
+                <div class="card-body">
+                    <p></p>
+                    <a class="stretched-link" href="{% url 'bringing_baby_home:classes' %}">Gottman Bringing Baby Home Program</a></div>
+            </div>
+        </div>
+    
+        <div class="col-md-4 mb-3">
+            <div class="border-0 card mx-auto">
+                <div><img alt="Making Marriage Work" class="img-thumbnail" src="{% static 'images/marriage_index_page.jpg' %}" /></div>
+                <div class="card-body">
+                    <p></p>
+                    <a class="stretched-link" href="{% url 'making_marriage_work:classes' %}">Gottman Seven Principles of Making Marriage Work Program</a></div>
+            </div>
+        </div>
+    
+        <div class="col-md-4 mb-3">
+            <div class="border-0 card mx-auto">
+                <div><img alt="Heart-Based Parenting" class="img-thumbnail" src="{% static 'images/heart_based.jpg' %}" /></div>
+                <div class="card-body">
+                    <p></p>
+                    <a class="stretched-link" href="{% url 'heart_based_parenting:classes' %}">Heart-Based Parenting Program</a></div>
+            </div>
+        </div>
     </div>
     
     <div class="row text-center">
@@ -41,6 +63,6 @@
             </div>
         </div>
     </div>
+    
 </div>
 {% endblock content %}
-    

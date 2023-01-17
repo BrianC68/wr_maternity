@@ -94,7 +94,7 @@ class CreateDoulaWorkshopBooking(CreateView):
 
         to_email = [User.objects.get(id=2).email]
         subject = 'Doula Workshop Booking'
-        from_email = 'info@well-roundedmaternity.com'
+        from_email = 'coral.slavin@gmail.com'
         try:
             send_mail(subject, message, from_email, to_email)
             send_mail(subject, message2, from_email, [email])

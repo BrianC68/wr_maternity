@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block keywords %}<meta name="keywords" content="Dr. Coral Slavin, Well-Rounded Family Services, marriage, seven principles">{% endblock keywords %}
+{% block description %}<meta name="description" content="Well-Rounded Family Services Gottman Seven Priniciples Program">{% endblock description %}
+{% block title %}<title>Well Rounded Family Services - Gottman Seven Principles Program</title>{% endblock title %}
+{% block header %}Gottman Seven Principles Program{% endblock header %}
+{% block content %}
+<div class="jumbotron" style="padding-top: 25px; padding-bottom: 15px;">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <img src="{% static 'images/making_marriage_work.jpg' %}" alt="Bringing Baby Home" class="img-thumbnail" />
+        </div>
+        <div class="col-md">
+            <div class="container">
+                <h5>Want to Improve Your Relationship?</h5>
+                <h5>Gottman Seven Principles Program</h5>
+                <p class="jumbotron-p"><a href="https://www.youtube.com/watch?v=Ap1TxCYZCHQ&t=66s" target="_blank">Seven Principles Video</a></p>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <p class="body-p">The 1-day Gottman Seven Principles Program draws on over 40 years of evidence-based research 
+        by Dr. John Gottman who revolutionized the study of couple relationships using rigorous scientific methods 
+        to observe the behaviors of couples over many years.  It is based on the New York Times best seller, 
+        The Seven Principles for Making Marriage Work, which summaries the research to lead couples towards a harmonious 
+        and long-lasting relationship.  It is the definitive guide for anyone who wants to deepen their relationship to 
+        attain its highest potential.</p>
+    
+    <p class="body-p">This Gottman Seven Principles Program aims to provide couples with practical tools and skills to enhance 
+        their relationship in a psycho-educational context.  It is appropriate for couples who are in a committed relationship, 
+        preparing for marriage, cohabiting, or married.  It is not a substitute for counseling or professional therapy.  
+        This program is not for those who are experiencing severe relationship distress, emotional abuse, domestic violence, 
+        active addictions, or serious mental health problems.</p>
+
+    <p>
+        <h5>Frequently Asked Questions About the Program:</h5>
+        <div class="container">
+        <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+            <li class="list-group-item" style="padding: 5px 15px;">Will we have to share our personal problems and issues with the other participants?<br />
+                Answer: No. Exercises are done privately between the couple.  Sharing publicly is not required.
+                </li>
+            <li class="list-group-item" style="padding: 5px 15px;">Must both partners attend or can I come alone?<br />
+                Answer: Yes. Both partners must be present to do the exercises together.
+                </li>
+            <li class="list-group-item" style="padding: 5px 15px;">My partner is not a reader. Can we still participate if they do not want to read the book?<br />
+                Answer: Yes. While the book provides a valuable reference, the class facilitator will summarize the content 
+                of the book to enable couples to understand the principles quickly and to do the exercises together as a couple. 
+                </li>
+            <li class="list-group-item" style="padding: 5px 15px;">What can we expect to learn from the program?<br />
+                Answer: The couple will learn the principles and tools to strengthen their relationship in a variety of ways, 
+                including deepening their love maps, fostering fondness and admiration, turning towards each other, accepting 
+                each other's influence, solving problems, overcoming gridlock and creating shared meaning. 
+                </li>
+        </ul>
+        </div>
+    </p>
+
+    <p class="body-p">About the Instructor: <a href="{% url 'about' %}"> Dr. Coral Slavin</a> is a Gottman Seven Principles Educator.  
+        She has a M.A. & Ph.D. in Health Education, and a M.S. Ed. degree in Family Life.  She has over 25 years of teaching experience.  </p>
+
+    <h5>Venue:</h5>
+    <div class="container">
+        <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+            <li class="list-group-item" style="padding: 5px 15px;">The program is conducted remotely via Zoom.</li>
+        </ul>
+    </div>
+
+    <h5>Time:</h5>
+    <div class="container">
+        <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+            <li class="list-group-item" style="padding: 5px 15px;">Saturdays, 9:00 a.m. to 5:30 p.m.</li>
+        </ul>
+    </div>
+
+    <h5>Cost:</h5>
+    <div class="container">
+        <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+            <li class="list-group-item" style="padding: 5px 15px;">$300 per couple</li>
+            <li class="list-group-item" style="padding: 5px 15px;">Includes: the Gottman kit comprising of the Seven Principles for Making Marriage Work; 
+                2 Guidebooks for couple; Love Maps Questions and Open-Ended Questions for Conversations.</li>
+        </ul>
+    </div>
+
+    <h5>Upcoming Dates:</h5>
+    <div class="container">
+        <ul class="list-group body-p" style="display: inline-block; margin-bottom: 10px;">
+            {% for class in classes %}
+            <li class="list-group-item" style="padding: 5px 15px;">
+                <a href="{% url 'making_marriage_work:register' pk=class.pk slug=class.slug %}">{{ class.class_date|date:"l"}}, {{ class.class_date }}</a></li>
+            {% empty %}
+            <li class="list-group-item" style="padding: 5px 15px;">
+                Sorry, no dates are available at this time.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock content %}

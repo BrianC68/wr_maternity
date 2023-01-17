@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Brian Christensen">
+    <style>
+        body {
+            color: #3d3a96;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 11pt;
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+        td {
+            padding-bottom: 20px;
+            vertical-align: top;
+        }
+        .content {
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+    </style>
+</head>
+<body class="open-sans">
+    <!-- Navbar-->
+    <nav style="background-color: white; margin-bottom: 20px;">
+            <div>
+            <a href="https://www.well-roundedmaternity.com"><img src="https://www.well-roundedmaternity.com{% static 'images/wr-logo-350x79.png' %}" alt="Home" /></a>
+            </div>
+    </nav>
+    <!-- End Navbar -->
+    <!-- Header -->
+    <div style="background-color: #5d559c; color: white; width: 100%; margin-bottom: 20px;">
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Making Marriage Work Class Reminder<br>&nbsp;
+    </div>
+    <!-- End Header -->
+    {% for class in mmw_class %}
+    <div class="content">
+    <table>
+        <tr>
+            <td style="width: 25%;">
+                Class:
+            </td>
+            <td>
+                {{class.title}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Dates/Times:
+            </td>
+            <td>
+                {{class.class_date|date:"l"}}, {{class.class_date}}<br />
+                {{class.start_time}} to {{class.end_time}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Location:
+            </td>
+            <td>
+                Remote via Zoom
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                {{message|safe|escape}}
+            </td>
+        </tr>
+    </table>
+    </div>
+    {% endfor %}
+</body>
+</html>

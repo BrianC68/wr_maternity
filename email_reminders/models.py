@@ -10,11 +10,15 @@ class ReminderEmail(models.Model):
     # Choices for email_type, database values
     DOULA_WORKSHOP = 'DOULA'
     CHILDBIRTH_CLASS = 'CBCLASS'
+    BRINGING_BABY_HOME = 'BBHCLASS'
+    MAKING_MARRIAGE_WORK = 'MMWCLASS'
 
     # String representations of choices
     EMAIL_TYPE_CHOICES = [
         (DOULA_WORKSHOP, 'Doula Workshop'),
-        (CHILDBIRTH_CLASS, 'Childbirth Class')
+        (CHILDBIRTH_CLASS, 'Childbirth Class'),
+        (BRINGING_BABY_HOME, 'Bringing Baby Home'),
+        (MAKING_MARRIAGE_WORK, 'Making Marriage Work'),
     ]
 
     #Model Fields
