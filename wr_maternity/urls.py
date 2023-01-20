@@ -3,8 +3,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import RedirectView, TemplateView
+from django.contrib import admin
 from site_pages.views import HomePage, AboutPage, PaymentSuccess
 from find_a_doula.views import DoulaListView
+
+# added to remove sidebar and fix admin
+admin.autodiscover()
+admin.site.enable_nav_sidebar = False
 
 urlpatterns = [
     path('', HomePage.as_view(), name='homepage'),
